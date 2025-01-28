@@ -1,6 +1,7 @@
 import requests
-from chat import Chat
+from src.chat import Chat
 from dotenv import load_dotenv
+import logging
 
 def help():
     print("press h check help")
