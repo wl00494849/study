@@ -1,5 +1,6 @@
 import requests
 import os
+import logging
 
 class Chat():
 
@@ -37,5 +38,6 @@ class Chat():
                 response_data = response.json()
                 return response_data['choices'][0]['message']['content']
             else:
+                logging.error(f"Error: {response.status_code}_{response.text}")
                 return "Error:",response.status_code,response.text
 

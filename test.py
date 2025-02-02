@@ -12,7 +12,7 @@ def help():
 
 def main():
     now = datetime.now()
-    logging.basicConfig(filename=f'log/{now.year}_{now.month}_{now.day}_test.log', level=logging.DEBUG)
+    logging.basicConfig(filename=f'log/{now.year}_{now.month}_{now.day}_test.log', level=logging.INFO)
     load_dotenv()
 
     model_setting = input("Setting your model：")
@@ -22,11 +22,10 @@ def main():
         logging.info(f"Chat model set to: {chat_model}")
     else:
         client = Chat()
-        logging.info("Default chat model used")
+        logging.info("Chat model set to: gpt-4o-mini")
 
     while 1:
         message = input("Input your question：")
-        logging.debug(f"User input: {message}")
         print("========================================")
         match message:
             case "h":
@@ -35,9 +34,10 @@ def main():
                 logging.info("Quitting the process")
                 break
             case _:
+                logging.info(f"User input: {message}")
                 response = client.response(message)   
                 print(response)
-                logging.debug(f"Chatbot response: {response}")
+                logging.info(f"Chatbot response: {response}")
                 print("========================================")
 
 print("========================================")

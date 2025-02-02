@@ -1,3 +1,6 @@
-INFO:root:Default chat model used
-DEBUG:root:User input: q
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:Quitting the process
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:User input: fileName1:112年國道每月營業額,fileName2:113年國道每日營業額。這兩筆檔案名稱適合時間分析，還是空間分析？是時間分析的話只回答我time,空間分回答我space,兩個都行回答我time,space，都沒有的話給我None
+INFO:root:Chatbot response: time
 INFO:root:Quitting the process
