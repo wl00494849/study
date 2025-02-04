@@ -5,8 +5,8 @@ import logging
 class Chat():
 
     def __init__(self, api_key:str=None, api_url:str=None, chat_model:str=None):
-        self.api_key = api_key or os.getenv("API_KEY")
-        self.api_url = api_url or os.getenv("API_URL")
+        self.__api_key = api_key or os.getenv("API_KEY")
+        self.__api_url = api_url or os.getenv("API_URL")
         self.chat_model = chat_model or "gpt-4o-mini"
         print(f"Using model: {self.chat_model}")
 
