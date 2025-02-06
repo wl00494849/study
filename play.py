@@ -1,6 +1,6 @@
 import requests
 from src.chat import Chat
-from src.analyze import get_cosine_similarity
+from src.analyze import Analyze
 from dotenv import load_dotenv
 
 def help():
@@ -11,6 +11,7 @@ def help():
 def main():
     load_dotenv()
     model_setting = input("Setting your model：")
+    aly = Analyze()
     if len(model_setting) != 0:
         chat_model = model_setting
         client = Chat(chat_model=chat_model)
@@ -20,7 +21,7 @@ def main():
     while 1:
         cmd = input("Input your command：")
         print("========================================")
-        match message:
+        match cmd:
             case "h":
                 help()
             case "q":
@@ -32,7 +33,7 @@ def main():
             case "s":
                 term1 = input("Input term1:")
                 term2 = input("Input term2:")
-                print(get_cosine_similarity(term1,term2))
+                print(aly.get_cosine_similarity(term1,term2))
             case _:
                 print("Input error")
             

@@ -1,4 +1,3 @@
-import requests
 import os
 import logging
 from openai import OpenAI
@@ -9,52 +8,41 @@ class Chat():
         self.__api_key = api_key or os.getenv("API_KEY")
         self.__api_url = api_url or os.getenv("API_URL")
         self.chat_model = chat_model or "gpt-4o-mini"
+        self.client = OpenAI(api_key=self.__api_key)
 
-    def response(self, message:str)->str:
-        headers = {
-            'Authorization': f'Bearer {self.__api_key}',
-            'Content-Type': 'application/json'
-        }
-
+    def response(self, prompt:str)->str:
         messages = []
         if self.chat_model != "o1-mini" or "o1":
-            messages.append({
-                "role":"system",
-                "content":"請以繁體中文回答"
-            })
-
-            messages.append({
-                "role":"user",
-                "content":message
-            })
-
-            data = {
-                "model": self.chat_model,
-                "messages": messages
-            }
-
-            response = requests.post(url=self.__api_url, headers=headers, json=data)
-            if response.status_code == 200:
-                response_data = response.json()
-                response = response_data['choices'][0]['message']['content']
-                self.__gpt_logger(self.chat_model,prompt=message,response=response,usage=response_data["usage"])
-                return response
-            else:
-                logging.error(f"Error: {response.status_code}_{response.text}")
-                return "Error:",response.status_code,response.text
+            messages.append(
+                {
+                    "role": "system",
+                    "content": "請以繁體中文回答"
+                }
+            )
+        
+        respones = self.client.chat.completions.create(
+            model=self.chat_model,
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
+        )
+        self.__gpt_logger(model=self.chat_model, prompt=message, response=respones.choices[0].message.content, usage=respones.usage)
+        return respones.choices[0].message.content
     
     def vector_response(self, term:list)->list:
-        client = OpenAI(api_key=self.__api_key)
         model = "text-embedding-3-small"
         print(term)
-        respones = client.embeddings.create(
+        respones = self.client.embeddings.create(
             model=model,
             input=term,
         )
-
+        self.__gpt_logger(model=model, prompt=term, usage=respones.usage)
         return respones.data[0].embedding
     
-    def __gpt_logger(self,model:str, prompt:str, response:str, usage:list=None):
+    def __gpt_logger(self,model:str=None, prompt:str=None, response:str=None, usage:list=None):
         logging.info(f"Use Model: {model}")
         logging.info(f"Prompt string: {prompt}")
         logging.info(f"Response data: {response}")
