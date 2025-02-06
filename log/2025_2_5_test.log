@@ -1,0 +1,32 @@
+INFO:root:Prompt string: fileName1:112年國道每月營業額.csv,fileName2:113年國道每月營業額.csv。這兩筆檔案名稱適合時間分析，還是空間分析？
+是時間分析的話只回答我time,空間分回答我space,兩個都行回答我time,space,都沒有的話給我None
+INFO:root:Chatbot response: time
+INFO:root:Prompt string: File1 row:['區名', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],col:['中壢', '湖口', '泰安', '西螺', '新營', '仁德', '關西', '西湖', '清水', '南投', '古坑', '東山', '關廟', '石碇', '蘇澳']
+File2 row:['區名', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],col:['中壢', '湖口', '泰安', '西螺', '新營', '仁德', '關西', '西湖', '清水', '南投', '古坑', '東山', '關廟', '石碇', '蘇澳']
+這兩筆資料的欄位名稱有哪些適合合併的？請只給我適合合併欄位名稱就好。並以空格區隔
+INFO:root:Chatbot response: 區名 1月 2月 3月 4月 5月 6月 7月 8月 9月 10月 11月 12月
+INFO:root:Prompt string: fileName1:112年國道每月營業額.csv,fileName2:113年國道每月營業額.csv。這兩筆檔案名稱適合時間分析，還是空間分析？
+是時間分析的話只回答我time,空間分回答我space,兩個都行回答我time,space,都沒有的話給我None
+INFO:root:Chatbot response: timeINFO:root:Use Model: gpt-4o-mini
+INFO:root:Prompt string: fileName1:112年國道每月營業額.csv,fileName2:113年國道每月營業額.csv。這兩筆檔案名稱適合時間分析，還是空間分析？
+是時間分析的話只回答我time,空間分回答我space,兩個都行回答我time,space,都沒有的話給我None
+INFO:root:Response data: time
+INFO:root:Use Model: gpt-4o-mini
+INFO:root:Prompt string: fileName1:112年國道每月營業額.csv,fileName2:113年國道每月營業額.csv。這兩筆檔案名稱適合時間分析，還是空間分析？
+是時間分析的話只回答我time,空間分回答我space,兩個都行回答我time,space,都沒有的話給我None
+INFO:root:Response data: time
+INFO:root:Usage:{'prompt_tokens': 98, 'completion_tokens': 2, 'total_tokens': 100, 'prompt_tokens_details': {'cached_tokens': 0, 'audio_tokens': 0}, 'completion_tokens_details': {'reasoning_tokens': 0, 'audio_tokens': 0, 'accepted_prediction_tokens': 0, 'rejected_prediction_tokens': 0}}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: ['地點', '蘋果', '住址']
+INFO:root:Usage:None
+INFO:root:Use Model: gpt-4o-mini
+INFO:root:Prompt string: fileName1:112年國道每月營業額.csv,fileName2:113年國道每月營業額.csv。這兩筆檔案名稱適合時間分析，還是空間分析？
+是時間分析的話只回答我time,空間分回答我space,兩個都行回答我time,space,都沒有的話給我None
+INFO:root:Response data: time
+INFO:root:Usage:{'prompt_tokens': 98, 'completion_tokens': 2, 'total_tokens': 100, 'prompt_tokens_details': {'cached_tokens': 0, 'audio_tokens': 0}, 'completion_tokens_details': {'reasoning_tokens': 0, 'audio_tokens': 0, 'accepted_prediction_tokens': 0, 'rejected_prediction_tokens': 0}}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: ['地點']
+INFO:root:Usage:None
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"

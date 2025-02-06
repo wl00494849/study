@@ -1,10 +1,12 @@
 import requests
 from src.chat import Chat
+from src.analyze import get_cosine_similarity
 from dotenv import load_dotenv
 
 def help():
     print("press h check help")
     print("press q quit process")
+    print("press g use gpt")
 
 def main():
     load_dotenv()
@@ -16,17 +18,25 @@ def main():
         client = Chat()
 
     while 1:
-        message = input("Input your question：")
+        cmd = input("Input your command：")
         print("========================================")
         match message:
             case "h":
                 help()
             case "q":
                 break
-            case _:
+            case "g":
+                message = input("Input your question：")
                 response = client.response(message)   
                 print(response)
-                print("========================================")
+            case "s":
+                term1 = input("Input term1:")
+                term2 = input("Input term2:")
+                print(get_cosine_similarity(term1,term2))
+            case _:
+                print("Input error")
+            
+        print("========================================")
 
 print("========================================")
 help()
