@@ -29,7 +29,7 @@ class Chat():
                 }
             ]
         )
-        self.__gpt_logger(model=self.chat_model, prompt=message, response=respones.choices[0].message.content, usage=respones.usage)
+        self.__gpt_logger(model=self.chat_model, prompt=prompt, response=respones.choices[0].message.content, usage=respones.usage)
         return respones.choices[0].message.content
     
     def vector_response(self, term:list)->list:
