@@ -43,7 +43,7 @@ class Chat():
             input=term,
         )
         self.__gpt_logger(model=model, prompt=term, usage=respones.usage)
-        return respones.data[0].embedding
+        return respones.data
     
     def __gpt_logger(self,model:str=None, prompt:[str,list]=None, response:str=None, usage:list=None):
         logging.info(f"Use Model: {model}")
