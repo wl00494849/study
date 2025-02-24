@@ -58,3 +58,22 @@ INFO:root:Prompt string: 住址
 INFO:root:Response data: None
 INFO:root:Usage:Usage(prompt_tokens=3, total_tokens=3)
 INFO:root:cosine_similarity:[[0.58815985]]
+INFO:root:Chat model set to: s
+INFO:root:Quitting the process
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:Chat model set to: 公司登記(依營業項目別)－飼料製造業
+INFO:root:User input: 
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:Quitting the process
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:User input: 臺中市政府警察局104年3月份交通事故資料
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:Use Model: gpt-4o-mini
+INFO:root:Prompt string: 臺中市政府警察局104年3月份交通事故資料
+INFO:root:Response data: 抱歉，我無法直接提供特定日期的交通事故資料，因為我的知識截止到2023年，而且無法訪問即時數據。如果您想要查詢臺中市政府警察局或相關機構的交通事故資料，建議您直接訪問臺中市政府警察局的官方網站或聯絡他們的相關部門以獲取準確的資訊。通常，他們會有公開的交通事故統計資料可以查詢。
+INFO:root:Usage:CompletionUsage(completion_tokens=107, prompt_tokens=21, total_tokens=128, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=0, audio_tokens=0, reasoning_tokens=0, rejected_prediction_tokens=0), prompt_tokens_details=PromptTokensDetails(audio_tokens=0, cached_tokens=0))
+INFO:root:Chatbot response: 抱歉，我無法直接提供特定日期的交通事故資料，因為我的知識截止到2023年，而且無法訪問即時數據。如果您想要查詢臺中市政府警察局或相關機構的交通事故資料，建議您直接訪問臺中市政府警察局的官方網站或聯絡他們的相關部門以獲取準確的資訊。通常，他們會有公開的交通事故統計資料可以查詢。
+INFO:root:Quitting the process
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:Quitting the process

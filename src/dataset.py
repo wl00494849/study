@@ -13,9 +13,4 @@ def get_dataset():
         with open(fileName, 'wb') as f:
             f.write(response.content)
     
-    # df = pd.read_csv(fileName)
-    # s = '盤後資訊'
-    # seek = df[df.資料集名稱.str.contains(s,na=False)]
-    # seek.to_csv('data/seek.csv',index=False)
-    
 get_dataset()

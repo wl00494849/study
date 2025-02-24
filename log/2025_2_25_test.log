@@ -1,0 +1,24 @@
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: 出生統計
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=5, total_tokens=5)
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-large
+INFO:root:Prompt string: 出生統計
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=5, total_tokens=5)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-large
+INFO:root:Prompt string: 盤後資訊
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=7, total_tokens=7)
+INFO:root:Quitting the process
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-large
+INFO:root:Prompt string: 
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=1, total_tokens=1)

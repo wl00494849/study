@@ -20,8 +20,8 @@ class Analyze:
         response1 = self.client.get_vector(term1,size)
         response2 = self.client.get_vector(term2,size)
 
-        di1 = np.array([response1]).reshape(1, -1)
-        di2 = np.array([response2]).reshape(1, -1)
+        di1 = np.array([response1[0].embedding]).reshape(1, -1)
+        di2 = np.array([response2[0].embedding]).reshape(1, -1)
         
         cos = cosine_similarity(di1,di2)
         logging.info(f"cosine_similarity:{cos}")

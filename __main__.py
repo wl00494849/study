@@ -1,14 +1,15 @@
 import requests
 from src.chat import Chat
+from src.search import search_file
 from dotenv import load_dotenv
 import logging
 from datetime import datetime
 
 
-
 def help():
     print("press h check help")
     print("press q quit process")
+    print("press s search open data")
 
 def main():
     now = datetime.now()
@@ -33,12 +34,17 @@ def main():
             case "q":
                 logging.info("Quitting the process")
                 break
+            case "s":
+                key = input("請輸入要搜尋的開放資料名稱:")
+                search_file(keyword=key)
             case _:
                 logging.info(f"User input: {message}")
                 response = client.response(message)   
                 print(response)
                 logging.info(f"Chatbot response: {response}")
                 print("========================================")
+
+
 
 print("========================================")
 help()
