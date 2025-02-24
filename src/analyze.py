@@ -15,15 +15,15 @@ class Analyze:
         res = self.client.response(str) 
         return res
 
-    def get_cosine_similarity(self,term1:str,term2:str)->float:
+    def get_cosine_similarity(self,term1:str,term2:str,size:int=0)->float:
         logging.info(f"term1:{term1},term2:{term2}")
-        response1 = self.client.vector_response(term1)
-        response2 = self.client.vector_response(term2)
+        response1 = self.client.get_vector(term1,size)
+        response2 = self.client.get_vector(term2,size)
 
-        response1 = np.array([response1]).reshape(1, -1)
-        response2 = np.array([response2]).reshape(1, -1)
+        di1 = np.array([response1]).reshape(1, -1)
+        di2 = np.array([response2]).reshape(1, -1)
         
-        cos = cosine_similarity(response1,response2)
+        cos = cosine_similarity(di1,di2)
         logging.info(f"cosine_similarity:{cos}")
         return cos
 

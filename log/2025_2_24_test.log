@@ -1,0 +1,60 @@
+INFO:root:term1:地址,term2:住址
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: 地址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=1, total_tokens=1)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: 住址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=3, total_tokens=3)
+INFO:root:cosine_similarity:[[0.58815985]]
+INFO:root:term1:地址,term2:住址
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: 地址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=1, total_tokens=1)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: 住址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=3, total_tokens=3)
+INFO:root:cosine_similarity:[[0.58815985]]
+INFO:root:term1:地址,term2:住址
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: 地址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=1, total_tokens=1)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: 住址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=3, total_tokens=3)
+INFO:root:cosine_similarity:[[0.58815985]]
+INFO:root:term1:地址,term2:住址
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-large
+INFO:root:Prompt string: 地址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=1, total_tokens=1)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-large
+INFO:root:Prompt string: 住址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=3, total_tokens=3)
+INFO:root:cosine_similarity:[[0.65945382]]
+INFO:root:term1:地址,term2:住址
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: 地址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=1, total_tokens=1)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Use Model: text-embedding-3-small
+INFO:root:Prompt string: 住址
+INFO:root:Response data: None
+INFO:root:Usage:Usage(prompt_tokens=3, total_tokens=3)
+INFO:root:cosine_similarity:[[0.58815985]]

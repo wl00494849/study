@@ -31,9 +31,12 @@ class Chat():
         )
         self.__gpt_logger(model=self.chat_model, prompt=prompt, response=respones.choices[0].message.content, usage=respones.usage)
         return respones.choices[0].message.content
-    
-    def vector_response(self, term:list)->list:
+
+    ## size = 0 -> small, size = 1 -> large
+    def get_vector(self, term:list,size:int=0)->list:
         model = "text-embedding-3-small"
+        if size > 0:
+            model = "text-embedding-3-large"
         print(term)
         respones = self.client.embeddings.create(
             model=model,
@@ -42,7 +45,7 @@ class Chat():
         self.__gpt_logger(model=model, prompt=term, usage=respones.usage)
         return respones.data[0].embedding
     
-    def __gpt_logger(self,model:str=None, prompt:str=None, response:str=None, usage:list=None):
+    def __gpt_logger(self,model:str=None, prompt:[str,list]=None, response:str=None, usage:list=None):
         logging.info(f"Use Model: {model}")
         logging.info(f"Prompt string: {prompt}")
         logging.info(f"Response data: {response}")

@@ -1,25 +1,48 @@
+import requests
 from src.chat import Chat
-from datetime import datetime
 from dotenv import load_dotenv
-from src.analyze import Analyze
-from openai import OpenAI
-import os
-import src.prompt as pt
-import src.extract as et 
 import logging
-import numpy as np
-import ast
+from datetime import datetime
 
-now = datetime.now()
-logging.basicConfig(filename=f'log/{now.year}_{now.month}_{now.day}_test.log', level=logging.INFO)
-load_dotenv()
+
+
+def help():
+    print("press h check help")
+    print("press q quit process")
 
 def main():
-    aly = Analyze()
-    li = aly.strip_address("新竹科學園區新竹市力行六路8號")
-    print(li)
+    now = datetime.now()
+    logging.basicConfig(filename=f'log/{now.year}_{now.month}_{now.day}_test.log', level=logging.INFO)
+    load_dotenv()
+
+    model_setting = input("Setting your model：")
+    if len(model_setting) != 0:
+        chat_model = model_setting
+        client = Chat(chat_model=chat_model)
+        logging.info(f"Chat model set to: {chat_model}")
+    else:
+        client = Chat()
+        logging.info("Chat model set to: gpt-4o-mini")
+
+    while 1:
+        message = input("Input your question：")
+        print("========================================")
+        match message:
+            case "h":
+                help()
+            case "q":
+                logging.info("Quitting the process")
+                break
+            case _:
+                logging.info(f"User input: {message}")
+                response = client.response(message)   
+                print(response)
+                logging.info(f"Chatbot response: {response}")
+                print("========================================")
+
+print("========================================")
+help()
+print("========================================")
 
 if __name__ == "__main__":
     main()
-
-        

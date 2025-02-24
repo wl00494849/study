@@ -1,7 +1,7 @@
 def st_analysis_ByFileName(fileName1:str,fileName2:str)->str:
     return f"""
     fileName1:{fileName1},fileName2:{fileName2}。
-    這兩筆檔案名稱適合時間分析，還是空間分析？\n
+    這兩筆檔案名稱適合時間分析，還是空間分析？
     是時間分析的話只回答我time,空間分回答我space,
     兩個都行回答我time,space,都沒有的話給我None
     """
@@ -15,14 +15,14 @@ def st_analysis_ByFieldName(field1:list,field2:list)->str:
 
 def st_analysis_address(address:str)->str:
     return f"""
-    請幫我分解台灣地址,只給我郵遞區號,縣市,區域,街道,以\",\"隔開,
+    請幫我分解台灣地址,只給我縣市,區域,街道,以\",\"隔開,
     請依照下列陣列格式回傳,不要有額外的東西\n
     EX1:557南投縣竹山鎮祖師街7號\n
-    [郵遞區號,縣市,區域,街道]
-    [557,南投縣,竹山鎮,祖師街]]\n
-    EX2:南投縣埔里鎮大學路一號\n
     [縣市,區域,街道]
-    [南投縣,埔里鎮,大學路]\n
+    [南投縣,竹山鎮,祖師街]]\n
+    EX2:埔里鎮大學路一號\n
+    [區域,街道]
+    [埔里鎮,大學路]\n
     EX3:台北市信義區\n
     [縣市,區域]
     [台北市,信義區]\n

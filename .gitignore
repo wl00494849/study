@@ -3,3 +3,4 @@ myenv
 *.env
 *.csv
 .DS_Store
+distillation.py

@@ -1,46 +1,39 @@
 import requests
 from src.chat import Chat
+from src.analyze import Analyze
 from dotenv import load_dotenv
 import logging
+from sklearn.metrics.pairwise import cosine_similarity
 from datetime import datetime
+import pandas as pd
+import numpy as np
 
+def test():
+    gpt = Chat()
+    aly = Analyze()
+    # df = pd.read_csv("dataset/OpenDataSet_2025_2_24.csv")
+    # dataName = df['資料集名稱'].values
+    ## dataName len = 52201
+    ## MAX_TOKENS = 8192
 
+    # new_df = pd.DataFrame(li, columns=['dataset_Name','dimension'])
+    # new_df.to_csv('dataset/dataset_dimension.csv', index=False)
+    
+    # df = pd.read_csv("dataset/dataset_dimension.csv")
+    # t = df.iloc[3,0]
+    # print(t)
 
-def help():
-    print("press h check help")
-    print("press q quit process")
+    # di1 = np.array([float(x) for x in df.iloc[3,1].strip('[]').split(',')]).reshape(1, -1)
+    # di2 = np.array([float(x) for x in df.iloc[6,1].strip('[]').split(',')]).reshape(1, -1)
 
-def main():
-    now = datetime.now()
-    logging.basicConfig(filename=f'log/{now.year}_{now.month}_{now.day}_test.log', level=logging.INFO)
-    load_dotenv()
+    # cos = cosine_similarity(di1,di2)
+    # print(cos)
 
-    model_setting = input("Setting your model：")
-    if len(model_setting) != 0:
-        chat_model = model_setting
-        client = Chat(chat_model=chat_model)
-        logging.info(f"Chat model set to: {chat_model}")
-    else:
-        client = Chat()
-        logging.info("Chat model set to: gpt-4o-mini")
+    # res = gpt.vector_response("有線廣播電視事業發展基金附屬單位決算")
+    # print(res[0].embedding)
+    # cos = aly.get_cosine_similarity("地址","address")
+    # print(cos)
+    
+    gpt.get_vector(["地址","住址","地點"])
 
-    while 1:
-        message = input("Input your question：")
-        print("========================================")
-        match message:
-            case "h":
-                help()
-            case "q":
-                logging.info("Quitting the process")
-                break
-            case _:
-                logging.info(f"User input: {message}")
-                response = client.response(message)   
-                print(response)
-                logging.info(f"Chatbot response: {response}")
-                print("========================================")
-
-print("========================================")
-help()
-print("========================================")
-main() 
+test()
