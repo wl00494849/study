@@ -1,0 +1,15 @@
+```python
+df1_numeric = df1.copy()
+df1_numeric.iloc[:, 1:] = df1_numeric.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+
+df2_numeric = df2.copy()
+
+result = df1_numeric.copy()
+result.iloc[:, 1:] = (df1_numeric.iloc[:, 1:] + df2_numeric.iloc[:, 1:]) / 2
+result.iloc[:, 1:] = result.iloc[:, 1:].round(1)
+
+result
+```
+==================================
+total_tolen=2015
+==================================

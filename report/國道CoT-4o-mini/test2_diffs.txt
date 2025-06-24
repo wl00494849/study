@@ -1,0 +1,16 @@
+Row 0, Column '區名': gold = 中壢, test = x
+Row 1, Column '區名': gold = 湖口, test = x
+Row 2, Column '區名': gold = 泰安, test = x
+Row 3, Column '區名': gold = 西螺, test = x
+Row 4, Column '區名': gold = 新營, test = x
+Row 5, Column '區名': gold = 仁德, test = x
+Row 6, Column '區名': gold = 關西, test = x
+Row 7, Column '區名': gold = 西湖, test = x
+Row 8, Column '區名': gold = 清水, test = x
+Row 9, Column '區名': gold = 南投, test = x
+Row 9, Column '7月': gold = 23361779.6, test = 23361779.59
+Row 10, Column '區名': gold = 古坑, test = x
+Row 11, Column '區名': gold = 東山, test = x
+Row 12, Column '區名': gold = 關廟, test = x
+Row 13, Column '區名': gold = 石碇, test = x
+Row 14, Column '區名': gold = 蘇澳, test = x

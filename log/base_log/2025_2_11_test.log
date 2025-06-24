@@ -1,0 +1,52 @@
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:Use Model: gpt-4o-mini
+INFO:root:Prompt string: 
+    請幫我分解台灣地址,只給我郵遞區號,縣市,區域,街道,以","隔開,
+    請依照下列陣列格式回傳,不要有額外的東西
+
+    EX1:557南投縣竹山鎮祖師街7號
+
+    [郵遞區號,縣市,區域,街道]
+    [557,南投縣,竹山鎮,祖師街]]
+
+    EX2:南投縣埔里鎮大學路一號
+
+    [縣市,區域,街道]
+    [南投縣,埔里鎮,大學路]
+
+    EX3:台北市信義區
+
+    [縣市,區域]
+    [台北市,信義區]
+
+    台北市信義區市府路1號？
+    
+INFO:root:Response data: [郵遞區號,縣市,區域,街道]  
+[110,台北市,信義區,市府路]
+INFO:root:Usage:CompletionUsage(completion_tokens=34, prompt_tokens=213, total_tokens=247, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=0, audio_tokens=0, reasoning_tokens=0, rejected_prediction_tokens=0), prompt_tokens_details=PromptTokensDetails(audio_tokens=0, cached_tokens=0))
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:Use Model: gpt-4o-mini
+INFO:root:Prompt string: 
+    請幫我分解台灣地址,只給我郵遞區號,縣市,區域,街道,以","隔開,
+    請依照下列陣列格式回傳,不要有額外的東西
+
+    EX1:557南投縣竹山鎮祖師街7號
+
+    [郵遞區號,縣市,區域,街道]
+    [557,南投縣,竹山鎮,祖師街]]
+
+    EX2:南投縣埔里鎮大學路一號
+
+    [縣市,區域,街道]
+    [南投縣,埔里鎮,大學路]
+
+    EX3:台北市信義區
+
+    [縣市,區域]
+    [台北市,信義區]
+
+    台北市信義區市府路1號？
+    
+INFO:root:Response data: [郵遞區號,縣市,區域,街道]  
+[110,台北市,信義區,市府路]
+INFO:root:Usage:CompletionUsage(completion_tokens=34, prompt_tokens=213, total_tokens=247, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=0, audio_tokens=0, reasoning_tokens=0, rejected_prediction_tokens=0), prompt_tokens_details=PromptTokensDetails(audio_tokens=0, cached_tokens=0))

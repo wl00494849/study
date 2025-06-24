@@ -1,0 +1,53 @@
+```python
+df1_renamed = df1.rename(columns={'郵地區號': '郵遞區號', '熱點名稱': '熱點名稱', '地址': '地址', '經度': '經度', '緯度': '緯度'})
+df2_renamed = df2.rename(columns={'地點': '主管機關', 'Latitude': '緯度', 'Longitude': '經度'})
+df3_renamed = df3.rename(columns={'主管機關（所屬機關名稱）': '主管機關', '地區（所屬縣市名稱）': '地區', '熱點名稱（依熱點所在地命名）': '熱點名稱', '郵地區號': '郵遞區號', '地址': '地址', '緯度': '緯度', '經度': '經度'})
+result = pd.concat([df1_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']], df2_renamed[['經度', '緯度', '地址']], df3_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]], ignore_index=True)
+result = result.sort_values(by='郵遞區號')
+```
+==================================
+第0次修復
+錯誤訊息："['郵遞區號', '地區'] not in index"
+```
+df1_renamed = df1.rename(columns={'郵地區號': '郵遞區號', '熱點名稱': '熱點名稱', '地址': '地址', '經度': '經度', '緯度': '緯度'})
+df2_renamed = df2.rename(columns={'地點': '地址', 'Latitude': '緯度', 'Longitude': '經度'})
+df3_renamed = df3.rename(columns={'主管機關（所屬機關名稱）': '主管機關', '地區（所屬縣市名稱）': '地區', '熱點名稱（依熱點所在地命名）': '熱點名稱', '郵地區號': '郵遞區號', '地址': '地址', '緯度': '緯度', '經度': '經度'})
+result = pd.concat([df1_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']], df2_renamed[['地址', '經度', '緯度']], df3_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]], ignore_index=True)
+result = result.sort_values(by='郵遞區號')
+```
+==================================
+第1次修復
+錯誤訊息："['郵遞區號', '地區'] not in index"
+```python
+df1_renamed = df1.rename(columns={'郵遞區號': '郵遞區號', '地區': '地區', '熱點名稱': '熱點名稱', '地址': '地址', '經度': '經度', '緯度': '緯度'})
+df2_renamed = df2.rename(columns={'地點': '地址', 'Latitude': '緯度', 'Longitude': '經度'})
+df3_renamed = df3.rename(columns={'主管機關（所屬機關名稱）': '主管機關', '地區（所屬縣市名稱）': '地區', '熱點名稱（依熱點所在地命名）': '熱點名稱', '郵遞區號': '郵遞區號', '地址': '地址', '緯度': '緯度', '經度': '經度'})
+result = pd.concat([df1_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']], df2_renamed[['地址', '經度', '緯度']], df3_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]], ignore_index=True)
+result = result.sort_values(by='郵遞區號')
+result = result.reset_index(drop=True)
+```
+==================================
+第2次修復
+錯誤訊息："['郵遞區號', '地區'] not in index"
+```python
+df1_renamed = df1.rename(columns={'郵遞區號': '郵遞區號', '地區': '地區', '熱點名稱': '熱點名稱', '地址': '地址', '經度': '經度', '緯度': '緯度'})
+df2_renamed = df2.rename(columns={'地點': '地址', 'Latitude': '緯度', 'Longitude': '經度'})
+df3_renamed = df3.rename(columns={'主管機關（所屬機關名稱）': '主管機關', '地區（所屬縣市名稱）': '地區', '熱點名稱（依熱點所在地命名）': '熱點名稱', '郵遞區號': '郵遞區號', '地址': '地址', '緯度': '緯度', '經度': '經度'})
+result = pd.concat([df1_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']], df2_renamed[['地址', '經度', '緯度']], df3_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]], ignore_index=True)
+result = result.sort_values(by='郵遞區號').reset_index(drop=True)
+result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']] = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']].fillna('')
+```
+==================================
+第3次修復
+錯誤訊息："['郵遞區號', '地區'] not in index"
+```python
+df1_renamed = df1.rename(columns={'郵遞區號': '郵遞區號', '地區': '地區', '熱點名稱': '熱點名稱', '地址': '地址', '經度': '經度', '緯度': '緯度'})
+df2_renamed = df2.rename(columns={'地點': '地址', 'Latitude': '緯度', 'Longitude': '經度'})
+df3_renamed = df3.rename(columns={'主管機關（所屬機關名稱）': '主管機關', '地區（所屬縣市名稱）': '地區', '熱點名稱（依熱點所在地命名）': '熱點名稱', '郵遞區號': '郵遞區號', '地址': '地址', '緯度': '緯度', '經度': '經度'})
+result = pd.concat([df1_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']], df2_renamed[['地址', '經度', '緯度']], df3_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]], ignore_index=True)
+result = result.sort_values(by='郵遞區號').reset_index(drop=True)
+result = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']].fillna('')
+```
+==================================
+total_tolen=5690
+==================================

@@ -1,0 +1,16 @@
+```python
+df1_cleaned = df1[['地址', '熱點名稱', '經度', '緯度']].rename(columns={'地址': '地址', '熱點名稱': '熱點名稱', '經度': '經度', '緯度': '緯度'})
+df2_cleaned = df2[['地址', '地點', 'Longitude', 'Latitude']].rename(columns={'地點': '熱點名稱', 'Longitude': '經度', 'Latitude': '緯度'})
+df3_cleaned = df3[['郵地區號', '地區（所屬縣市名稱）', '熱點名稱（依熱點所在地命名）', '地址', '經度', '緯度']].rename(columns={'地區（所屬縣市名稱）': '地區', '熱點名稱（依熱點所在地命名）': '熱點名稱'})
+
+result = pd.concat([
+    df1_cleaned.assign(郵遞區號=None, 地區='雲林縣'),
+    df2_cleaned.assign(郵遞區號=None, 地區='高雄市'),
+    df3_cleaned.assign(地區='南投縣')
+], ignore_index=True)
+
+result = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']].sort_values(by='郵遞區號', ascending=True).reset_index(drop=True)
+```
+==================================
+total_tolen=2226
+==================================

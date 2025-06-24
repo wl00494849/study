@@ -1,0 +1,2 @@
+總Schema_Coverage:95.0%
+總Accuracy:80.0%

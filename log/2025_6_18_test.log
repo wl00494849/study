@@ -1,0 +1,73 @@
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月,term2:月份
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月,term2:月份
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月,term2:月份
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[0.46368406]]
+INFO:root:term1:1月,term2:4月
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[0.60375637]]
+INFO:root:term1:1月,term2:1月_平均
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[0.65348966]]
+INFO:root:term1:1月,term2:1月_avg
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[0.66674869]]
+INFO:root:Quitting the process
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月,term2:1月_平均
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[0.62328713]]
+INFO:root:term1:1月,term2:9月
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[0.57260609]]
+INFO:root:term1:1月,term2:1月
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[0.99999894]]
+INFO:root:Quitting the process
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月__112,term2:1月
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[0.64278184]]
+INFO:root:Quitting the process
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月,term2:月份
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月,term2:月份
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月,term2:月份
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[1.]]
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:Quitting the process
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月,term2:月份
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:term1:1月,term2:月份
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:cosine_similarity:[[0.58744291]]
+INFO:root:Quitting the process

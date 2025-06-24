@@ -1,0 +1,38 @@
+```python
+df1_buy = df1[['券商', '價格', '買進股數']].copy()
+df2_buy = df2[['券商', '價格', '買進股數']].copy()
+df_all = pd.concat([df1_buy, df2_buy], ignore_index=True)
+df_all['成交金額'] = df_all['價格'] * df_all['買進股數']
+agg = df_all.groupby('券商', as_index=False).agg({'價格': lambda x: round((x * df_all.loc[x.index, '買進股數']).sum() / df_all.loc[x.index, '買進股數'].sum(), 1), '買進股數': 'sum', '成交金額': 'sum'})
+agg.columns = ['券商', '均價', '總買進股數', '總買進成交金額']
+agg['股票代號'] = '2454'
+result = agg[['券商', '均價', '總買進股數', '總買進成交金額', '股票代號']]
+```
+==================================
+第0次修復
+錯誤訊息：name 'df_all' is not defined
+exec("""
+df1_buy = df1[['券商', '價格', '買進股數']].copy()
+df2_buy = df2[['券商', '價格', '買進股數']].copy()
+df_all = pd.concat([df1_buy, df2_buy], ignore_index=True)
+df_all['成交金額'] = df_all['價格'] * df_all['買進股數']
+grouped = df_all.groupby('券商', as_index=False)
+agg = grouped.agg(總買進股數=('買進股數', 'sum'), 總買進成交金額=('成交金額', 'sum'))
+agg['均價'] = (grouped.apply(lambda x: round((x['價格'] * x['買進股數']).sum() / x['買進股數'].sum(), 1))).values
+agg['股票代號'] = '2454'
+result = agg[['券商', '均價', '總買進股數', '總買進成交金額', '股票代號']]
+""")
+==================================
+第1次修復
+錯誤訊息：2
+exec("""
+df_all = pd.concat([df1[['券商','價格','買進股數']], df2[['券商','價格','買進股數']]], ignore_index=True)
+df_all['成交金額'] = df_all['價格'] * df_all['買進股數']
+agg = df_all.groupby('券商', as_index=False).agg(總買進股數=('買進股數','sum'), 總買進成交金額=('成交金額','sum'))
+agg['均價'] = ((df_all.groupby('券商').apply(lambda x: (x['價格']*x['買進股數']).sum()/x['買進股數'].sum())).round(1).values)
+agg['股票代號'] = '2454'
+result = agg[['券商','均價','總買進股數','總買進成交金額','股票代號']]
+""")
+==================================
+total_tolen=3030
+==================================

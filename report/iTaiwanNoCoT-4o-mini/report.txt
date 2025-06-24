@@ -1,0 +1,3 @@
+total_token=38654
+total_error=20
+avg_token=3865

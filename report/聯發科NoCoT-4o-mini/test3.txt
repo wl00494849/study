@@ -1,0 +1,14 @@
+```python
+stock_code = '聯發科2454'
+df1_grouped = df1.groupby('券商').agg({'價格': 'mean', '買進股數': 'sum'}).reset_index()
+df2_grouped = df2.groupby('券商').agg({'價格': 'mean', '買進股數': 'sum'}).reset_index()
+merged = pd.merge(df1_grouped, df2_grouped, on='券商', how='outer', suffixes=('_1', '_2'))
+merged['均價'] = merged[['價格_1', '價格_2']].mean(axis=1).round(1)
+merged['總買進股數'] = merged[['買進股數_1', '買進股數_2']].sum(axis=1)
+merged['總買進成交金額'] = (merged['均價'] * merged['總買進股數']).round(1)
+result = merged[['券商', '均價', '總買進股數', '總買進成交金額']].fillna(0)
+result['股票代號'] = stock_code
+```
+==================================
+total_tolen=1723
+==================================

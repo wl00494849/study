@@ -1,0 +1,32 @@
+```python
+ticker = '2454'
+df1['成交金額'] = df1['價格'] * df1['買進股數']
+df2['成交金額'] = df2['價格'] * df2['買進股數']
+df1_grouped = df1.groupby('券商')['買進股數', '成交金額'].sum().reset_index()
+df2_grouped = df2.groupby('券商')['買進股數', '成交金額'].sum().reset_index()
+merged = pd.merge(df1_grouped, df2_grouped, on='券商', suffixes=('_1', '_2'))
+merged['總買進股數'] = merged['買進股數_1'] + merged['買進股數_2']
+merged['總成交金額'] = merged['成交金額_1'] + merged['成交金額_2']
+merged['均價'] = (merged['成交金額'] / merged['總買進股數']).round(1)
+result = merged[['券商', '均價', '總買進股數', '總成交金額']].copy()
+result['股票代號'] = ticker
+```
+==================================
+第0次修復
+錯誤訊息：Cannot subset columns with a tuple with more than one element. Use a list instead.
+```python
+ticker = '2454'
+df1['成交金額'] = df1['價格'] * df1['買進股數']
+df2['成交金額'] = df2['價格'] * df2['買進股數']
+df1_grouped = df1.groupby('券商')[['買進股數', '成交金額']].sum().reset_index()
+df2_grouped = df2.groupby('券商')[['買進股數', '成交金額']].sum().reset_index()
+merged = pd.merge(df1_grouped, df2_grouped, on='券商', suffixes=('_1', '_2'))
+merged['總買進股數'] = merged['買進股數_1'] + merged['買進股數_2']
+merged['總成交金額'] = merged['成交金額_1'] + merged['成交金額_2']
+merged['均價'] = (merged['總成交金額'] / merged['總買進股數']).round(1)
+result = merged[['券商', '均價', '總買進股數', '總成交金額']].copy()
+result['股票代號'] = ticker
+```
+==================================
+total_tolen=2474
+==================================

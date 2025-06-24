@@ -1,0 +1,72 @@
+為了計算這兩年的營業額平均值，並保留原有的區名順序，我們可以按照以下步驟進行處理：
+
+### 步驟 1: 數據預處理
+- **清理資料格式**：將 `df1` 中的營業額數據從字串格式轉換為數值格式。由於數據中包含逗號，可能需要進行去除操作，並將資料轉換為浮點數或整數型態。
+- **確保一致性**：檢查 `df2` 的數據格式，確認所有營業額都已為數值型態。如果有需要，也進行格式處理。
+
+### 步驟 2: 計算平均值
+- **對應區名**: 確保 `df1` 和 `df2` 的區名能一一對應，檢查是否所有的區名在兩個 DataFrame 中都是一致的。
+- **計算每個區名的平均營業額**: 
+  - 對於每個區名，將 `df1` 和 `df2` 的對應月份（1月至12月）的營業額相加，然後除以2計算平均值。
+  - 注意要保持區名列在最前面，即在平均值數據計算後，將區名與相應的平均值數據合併回來。
+
+### 步驟 3: 輸出格式
+- **創建新的 DataFrame**：根據計算出的平均值，創造一個新的 DataFrame，第一列為區名，後面的列為每個月的平均營業額。
+- **格式化小數點**：將計算的平均值保留到小數點第一位，確保格式一致。
+
+### 步驟 4: 返回或輸出結果
+- 返回新的 DataFrame，該 DataFrame 包含區名和各月份的營業額平均值。
+
+這樣的處理流程可以確保我們正確計算出平均營業額，同時保持資料格式和結構的正確性。
+==================================
+```python
+df1.iloc[:, 1:] = df1.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+df2.iloc[:, 1:] = df2.iloc[:, 1:].astype(float)
+result = pd.DataFrame()
+result['區名'] = df1['區名']
+result.iloc[:, 1:] = ((df1.iloc[:, 1:].values + df2.iloc[:, 1:].values) / 2).round(1)
+```
+==================================
+第0次修復
+錯誤訊息：loop of ufunc does not support argument 0 of type float which has no callable rint method
+```python
+df1.iloc[:, 1:] = df1.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+df2.iloc[:, 1:] = df2.iloc[:, 1:].astype(float)
+result = pd.DataFrame()
+result['區名'] = df1['區名']
+result.iloc[:, 1:] = ((df1.iloc[:, 1:].to_numpy() + df2.iloc[:, 1:].to_numpy()) / 2).round(1)
+
+```
+==================================
+第1次修復
+錯誤訊息：loop of ufunc does not support argument 0 of type float which has no callable rint method
+```python
+df1.iloc[:, 1:] = df1.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+df2.iloc[:, 1:] = df2.iloc[:, 1:].astype(float)
+result = pd.DataFrame()
+result['區名'] = df1['區名']
+result.iloc[:, 1:] = ((df1.iloc[:, 1:].values + df2.iloc[:, 1:].values) / 2).round(1)
+```
+==================================
+第2次修復
+錯誤訊息：loop of ufunc does not support argument 0 of type float which has no callable rint method
+```python
+df1.iloc[:, 1:] = df1.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+df2.iloc[:, 1:] = df2.iloc[:, 1:].astype(float)
+result = pd.DataFrame()
+result['區名'] = df1['區名']
+result.iloc[:, 1:] = ((df1.iloc[:, 1:].values + df2.iloc[:, 1:].values) / 2).round(1).astype(float)
+```
+==================================
+第3次修復
+錯誤訊息：loop of ufunc does not support argument 0 of type float which has no callable rint method
+```python
+df1.iloc[:, 1:] = df1.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+df2.iloc[:, 1:] = df2.iloc[:, 1:].astype(float)
+result = pd.DataFrame()
+result['區名'] = df1['區名']
+result.iloc[:, 1:] = ((df1.iloc[:, 1:].values + df2.iloc[:, 1:].values) / 2).round(1)
+```
+==================================
+total_tolen=8291
+==================================

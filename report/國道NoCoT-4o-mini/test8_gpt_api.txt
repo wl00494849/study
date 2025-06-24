@@ -1,0 +1,10 @@
+```python
+df1.iloc[:, 1:] = df1.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+df2.iloc[:, 1:] = df2.iloc[:, 1:].astype(float)
+result = pd.DataFrame()
+result['區名'] = df1['區名']
+result.iloc[:, 1:] = ((df1.iloc[:, 1:] + df2.iloc[:, 1:]) / 2).round(1)
+```
+==================================
+total_tolen=2009
+==================================

@@ -1,0 +1,20 @@
+```python
+df1_subset = df1[['地區', '熱點名稱', '地址', '經度', '緯度']].copy()
+df1_subset['郵遞區號'] = None
+
+df2_subset = df2[['地點', '地址', 'Longitude', 'Latitude']].copy()
+df2_subset['郵遞區號'] = None
+df2_subset['地區'] = None
+df2_subset['熱點名稱'] = None
+df2_subset = df2_subset.rename(columns={'Longitude': '經度', 'Latitude': '緯度'})
+
+df3_subset = df3[['地區（所屬縣市名稱）', '熱點名稱（依熱點所在地命名）', '郵地區號', '地址', '緯度', '經度']].copy()
+df3_subset = df3_subset.rename(columns={'地區（所屬縣市名稱）': '地區', '熱點名稱（依熱點所在地命名）': '熱點名稱', '郵地區號': '郵遞區號'})
+
+result = pd.concat([df1_subset, df2_subset, df3_subset], ignore_index=True)
+result = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+result = result.sort_values(by='郵遞區號')
+```
+==================================
+total_tolen=2209
+==================================

@@ -1,0 +1,24 @@
+```python
+df1_copy = df1.copy()
+df1_copy['郵遞區號'] = None
+df1_copy.rename(columns={'地區':'地區', '熱點名稱':'熱點名稱', '地址':'地址', '經度':'經度', '緯度':'緯度'}, inplace=True)
+df1_reorder = df1_copy[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+
+df2_copy = df2.copy()
+df2_copy['郵遞區號'] = None
+df2_copy.rename(columns={'地點':'熱點名稱', '地址':'地址', 'Longitude':'經度', 'Latitude':'緯度'}, inplace=True)
+df2_copy['地區'] = None
+df2_reorder = df2_copy[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+
+df3_copy = df3.copy()
+df3_copy.rename(columns={'主管機關（所屬機關名稱）':'主管機關', '地區（所屬縣市名稱）':'地區', '熱點名稱（依熱點所在地命名）':'熱點名稱', '地址':'地址', '經度':'經度', '緯度':'緯度', '郵地區號':'郵遞區號'}, inplace=True)
+df3_copy['郵遞區號'] = pd.to_numeric(df3_copy['郵遞區號'], errors='coerce')
+df3_reorder = df3_copy[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+
+result = pd.concat([df3_reorder, df1_reorder, df2_reorder], ignore_index=True)
+result['郵遞區號'] = pd.to_numeric(result['郵遞區號'], errors='coerce').fillna(0).astype(int)
+result = result.sort_values(by='郵遞區號').reset_index(drop=True)
+```
+==================================
+total_tolen=2354
+==================================

@@ -1,0 +1,116 @@
+```python
+df1_selected = df1[['地址', '地區', '熱點名稱', '經度', '緯度']].copy()
+df1_selected['郵遞區號'] = df1['地址'].str.extract('(\d{3})')[0]
+
+df2_selected = df2[['地址', '地點', 'Longitude', 'Latitude']].copy()
+df2_selected['郵遞區號'] = df2['地址'].str.extract('(\d{3})')[0]
+
+df3_selected = df3[['地址', '地區（所屬縣市名稱）', '熱點名稱（依熱點所在地命名）', '郵地區號', '經度', '緯度']].copy()
+df3_selected.rename(columns={
+    '地區（所屬縣市名稱）': '地區',
+    '熱點名稱（依熱點所在地命名）': '熱點名稱',
+    '郵地區號': '郵遞區號',
+    '經度': '經度',
+    '緯度': '緯度'
+}, inplace=True)
+
+result = pd.concat([df1_selected, df2_selected, df3_selected], ignore_index=True)
+result = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+result['郵遞區號'] = result['郵遞區號'].astype(int)
+result = result.sort_values(by='郵遞區號').reset_index(drop=True)
+```
+==================================
+第0次修復
+錯誤訊息："['地區'] not in index"
+```python
+df1_selected = df1[['地址', '地區', '熱點名稱', '經度', '緯度']].copy()
+df1_selected['郵遞區號'] = df1['地址'].str.extract('(\d{3})')[0]
+
+df2_selected = df2[['地址', '地點', 'Longitude', 'Latitude']].copy()
+df2_selected['郵遞區號'] = df2['地址'].str.extract('(\d{3})')[0]
+df2_selected.rename(columns={'地點': '地區', 'Longitude': '經度', 'Latitude': '緯度'}, inplace=True)
+
+df3_selected = df3[['地址', '地區（所屬縣市名稱）', '熱點名稱（依熱點所在地命名）', '郵地區號', '經度', '緯度']].copy()
+df3_selected.rename(columns={
+    '地區（所屬縣市名稱）': '地區',
+    '熱點名稱（依熱點所在地命名）': '熱點名稱',
+    '郵地區號': '郵遞區號'
+}, inplace=True)
+
+result = pd.concat([df1_selected, df2_selected, df3_selected], ignore_index=True)
+result = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+result['郵遞區號'] = result['郵遞區號'].astype(int)
+result = result.sort_values(by='郵遞區號').reset_index(drop=True)
+```
+==================================
+第1次修復
+錯誤訊息："['地區'] not in index"
+```python
+df1_selected = df1[['地址', '地區', '熱點名稱', '經度', '緯度']].copy()
+df1_selected['郵遞區號'] = df1['地址'].str.extract('(\d{3})')[0]
+
+df2_selected = df2[['地址', '地點', 'Longitude', 'Latitude']].copy()
+df2_selected['郵遞區號'] = df2['地址'].str.extract('(\d{3})')[0]
+df2_selected.rename(columns={'地點': '地區', 'Longitude': '經度', 'Latitude': '緯度'}, inplace=True)
+
+df3_selected = df3[['地址', '地區（所屬縣市名稱）', '熱點名稱（依熱點所在地命名）', '郵地區號', '經度', '緯度']].copy()
+df3_selected.rename(columns={
+    '地區（所屬縣市名稱）': '地區',
+    '熱點名稱（依熱點所在地命名）': '熱點名稱',
+    '郵地區號': '郵遞區號'
+}, inplace=True)
+
+result = pd.concat([df1_selected, df2_selected, df3_selected], ignore_index=True)
+result = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+result['郵遞區號'] = result['郵遞區號'].astype(str).str.extract('(\d+)')[0].astype(float)
+result = result.sort_values(by='郵遞區號').reset_index(drop=True)
+```
+==================================
+第2次修復
+錯誤訊息："['地區'] not in index"
+```python
+df1_selected = df1[['地址', '地區', '熱點名稱', '經度', '緯度']].copy()
+df1_selected['郵遞區號'] = df1['地址'].str.extract('(\d{3})')[0]
+
+df2_selected = df2[['地址', '地點', 'Longitude', 'Latitude']].copy()
+df2_selected['郵遞區號'] = df2['地址'].str.extract('(\d{3})')[0]
+df2_selected.rename(columns={'地點': '地區', 'Longitude': '經度', 'Latitude': '緯度'}, inplace=True)
+
+df3_selected = df3[['地址', '地區（所屬縣市名稱）', '熱點名稱（依熱點所在地命名）', '郵地區號', '經度', '緯度']].copy()
+df3_selected.rename(columns={
+    '地區（所屬縣市名稱）': '地區',
+    '熱點名稱（依熱點所在地命名）': '熱點名稱',
+    '郵地區號': '郵遞區號'
+}, inplace=True)
+
+result = pd.concat([df1_selected, df2_selected, df3_selected], ignore_index=True)
+result['郵遞區號'] = result['郵遞區號'].astype(str).str.extract('(\d+)')[0].astype(float)
+result = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+result = result.sort_values(by='郵遞區號').reset_index(drop=True)
+```
+==================================
+第3次修復
+錯誤訊息："['地區'] not in index"
+```python
+df1_selected = df1[['地址', '地區', '熱點名稱', '經度', '緯度']].copy()
+df1_selected['郵遞區號'] = df1['地址'].str.extract('(\d{3})')[0]
+
+df2_selected = df2[['地址', '地點', 'Longitude', 'Latitude']].copy()
+df2_selected['郵遞區號'] = df2['地址'].str.extract('(\d{3})')[0]
+df2_selected.rename(columns={'地點': '地區', 'Longitude': '經度', 'Latitude': '緯度'}, inplace=True)
+
+df3_selected = df3[['地址', '地區（所屬縣市名稱）', '熱點名稱（依熱點所在地命名）', '郵地區號', '經度', '緯度']].copy()
+df3_selected.rename(columns={
+    '地區（所屬縣市名稱）': '地區',
+    '熱點名稱（依熱點所在地命名）': '熱點名稱',
+    '郵地區號': '郵遞區號'
+}, inplace=True)
+
+result = pd.concat([df1_selected, df2_selected, df3_selected], ignore_index=True)
+result['郵遞區號'] = result['郵遞區號'].astype(str).str.extract('(\d+)')[0].astype(float)
+result = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+result = result.sort_values(by='郵遞區號').reset_index(drop=True)
+```
+==================================
+total_tolen=5868
+==================================

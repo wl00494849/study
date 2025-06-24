@@ -1,0 +1,70 @@
+```python
+buy1 = df1[['券商', '價格', '買進股數']].rename(columns={'券商':'券商', '價格':'價格', '買進股數':'買進股數'})
+buy2 = df2[['券商', '價格', '買進股數']].rename(columns={'券商':'券商', '價格':'價格', '買進股數':'買進股數'})
+buy_all = pd.concat([buy1, buy2])
+buy_all['買進成交金額'] = buy_all['價格'] * buy_all['買進股數']
+grouped = buy_all.groupby('券商').agg({'價格': lambda x: (buy_all.loc[x.index, '價格'] * buy_all.loc[x.index, '買進股數']).sum() / buy_all.loc[x.index, '買進股數'].sum(),
+                                      '買進股數': 'sum', '買進成交金額': 'sum'}).rename(columns={'價格':'均價', '買進股數':'總買進股數', '買進成交金額':'總買進成交金額'})
+grouped[['均價', '總買進成交金額']] = grouped[['均價', '總買進成交金額']].round(1)
+grouped = grouped.reset_index()
+grouped['股票代號'] = '2454'
+result = grouped[['券商', '均價', '總買進股數', '總買進成交金額', '股票代號']]
+```
+==================================
+第0次修復
+錯誤訊息：name 'buy_all' is not defined
+exec("""
+buy1 = df1[['券商', '價格', '買進股數']]
+buy2 = df2[['券商', '價格', '買進股數']]
+buy_all = pd.concat([buy1, buy2])
+buy_all['買進成交金額'] = buy_all['價格'] * buy_all['買進股數']
+def weighted_avg(x):
+    return (x['價格'] * x['買進股數']).sum() / x['買進股數'].sum()
+grouped = buy_all.groupby('券商').apply(lambda x: pd.Series({
+    '均價': weighted_avg(x),
+    '總買進股數': x['買進股數'].sum(),
+    '總買進成交金額': x['買進成交金額'].sum()
+})).reset_index()
+grouped[['均價','總買進成交金額']] = grouped[['均價','總買進成交金額']].round(1)
+grouped['股票代號'] = '2454'
+result = grouped[['券商','均價','總買進股數','總買進成交金額','股票代號']]
+""")
+==================================
+第1次修復
+錯誤訊息：name 'weighted_avg' is not defined
+exec("""
+buy1 = df1[['券商', '價格', '買進股數']]
+buy2 = df2[['券商', '價格', '買進股數']]
+buy_all = pd.concat([buy1, buy2])
+buy_all['買進成交金額'] = buy_all['價格'] * buy_all['買進股數']
+def weighted_avg(x):
+    return (x['價格'] * x['買進股數']).sum() / x['買進股數'].sum()
+grouped = buy_all.groupby('券商').apply(lambda x: pd.Series({
+    '均價': weighted_avg(x),
+    '總買進股數': x['買進股數'].sum(),
+    '總買進成交金額': x['買進成交金額'].sum()
+})).reset_index()
+grouped[['均價','總買進成交金額']] = grouped[['均價','總買進成交金額']].round(1)
+grouped['股票代號'] = '2454'
+result = grouped.rename(columns={'券商':'卷商'})[['卷商','均價','總買進股數','總買進成交金額','股票代號']]
+""")
+==================================
+第2次修復
+錯誤訊息：name 'weighted_avg' is not defined
+exec("""
+buy1 = df1[['券商', '價格', '買進股數']]
+buy2 = df2[['券商', '價格', '買進股數']]
+buy_all = pd.concat([buy1, buy2])
+buy_all['買進成交金額'] = buy_all['價格'] * buy_all['買進股數']
+result = buy_all.groupby('券商').apply(lambda x: pd.Series({
+    '均價': (x['價格'] * x['買進股數']).sum() / x['買進股數'].sum(),
+    '總買進股數': x['買進股數'].sum(),
+    '總買進成交金額': (x['價格'] * x['買進股數']).sum()
+})).reset_index()
+result[['均價','總買進成交金額']] = result[['均價','總買進成交金額']].round(1)
+result['股票代號'] = '2454'
+result = result.rename(columns={'券商':'卷商'})[['卷商','均價','總買進股數','總買進成交金額','股票代號']]
+""")
+==================================
+total_tolen=4056
+==================================

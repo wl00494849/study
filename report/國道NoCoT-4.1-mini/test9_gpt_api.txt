@@ -1,0 +1,13 @@
+```python
+df1_num = df1.copy()
+for col in df1.columns[1:]:
+    df1_num[col] = df1_num[col].str.replace(',', '').astype(float)
+df2_num = df2.copy()
+df2_num.iloc[:, 1:] = df2_num.iloc[:, 1:].astype(float)
+result = df1_num.copy()
+for col in df1.columns[1:]:
+    result[col] = ((df1_num[col] + df2_num[col]) / 2).round(1)
+```
+==================================
+total_tolen=2024
+==================================

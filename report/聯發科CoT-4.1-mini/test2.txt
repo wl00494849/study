@@ -1,0 +1,174 @@
+了解，下面針對您的需求與資料做整理與解讀，並提出處理步驟：
+
+---
+
+### 一、需求整理
+
+1. **合併兩天(2025/05/28與2025/05/29)券商資料**：
+   - 使用df1為2025/05/28資料，df2為2025/05/29資料。
+2. **計算項目**：
+   - 每個券商的「均價」、「總買進股數」、「總買進成交金額」。
+3. **條件**：
+   - 僅統計有買進股數(>0)的券商，將沒有買入的券商過濾掉。
+4. **結果欄位順序**：
+   - 卷商, 均價, 總買進股數, 總買進成交金額, 股票代號
+5. **格式與精度**：
+   - 均價需計算至小數點第一位。
+6. **股票代號**：
+   - 股票代號從檔名中擷取，如 "聯發科2454_20250528.csv" 代號即為 `2454`
+
+---
+
+### 二、資料結構解讀
+
+- 欄位分成「買方」部分與「賣方」部分，左側為買方、右側（欄名有.1的，如'券商.1'）為賣方資料。
+- 買進相關欄位：
+  - 買進股數（'買進股數'，無.1）
+  - 買進價格（'價格'，無.1）
+- 賣出欄位(無需關注)
+- 買方券商名稱欄位是 '券商'（無.1）
+- 因為計算均價與成交金額，以買進價格 × 買進股數計算買進成交金額。
+
+---
+
+### 三、問題拆解與處理步驟
+
+1. **擷取股票代號**  
+   從df1或df2的檔名（提示字串）中提取中間的數字，例如 "2454"。
+
+2. **整理單日資料的買方欄位資訊**  
+   - 從df1、df2中各取出買方券商('券商')、買入價格('價格')、買進股數('買進股數')三欄。
+   - 去除「買進股數為0或空值」的資料。
+
+3. **計算單日買進成交金額**  
+   - 新增欄位「買進成交金額」 = 買進股數 × 價格。
+
+4. **合併兩日資料（df1與df2）**  
+   - 將兩日的買方買進資料合併成一個DataFrame(縱向合併)。
+   - 相同券商資料合併，匯總買進股數與買進成交金額：  
+     - 合計買進股數  
+     - 合計買進成交金額  
+   - 計算總買入「均價」= 總買進成交金額 / 總買進股數，四捨五入到小數點第一位。
+
+5. **篩選結果**  
+   - 去除買進股數為0的券商（若有）。
+
+6. **加入股票代號欄位**  
+   - 新增欄位「股票代號」，填入先前提取的股票代號。
+
+7. **調整欄位順序**  
+   - 欄位依序排列為：  
+     「卷商」, 「均價」, 「總買進股數」, 「總買進成交金額」, 「股票代號」
+
+---
+
+### 補充說明
+
+- 若券商在其中一天沒有資料，但另一天有買進資料，仍保留合併紀錄。
+- 只使用買方資料，不受賣方資料(如 '券商.1')影響。
+- 均價計算應以綜合買進成交金額除以綜合買進股數，較合理。
+
+---
+
+這樣的處理流程可確保合併兩天券商的買進均價與數量，結果切合您的需求。
+==================================
+```python
+stock_code = df1.fileName.split('_')[0].strip('聯發科')
+df1_buy = df1[['券商','價格','買進股數']].copy()
+df1_buy = df1_buy[df1_buy['買進股數']>0]
+df1_buy['買進成交金額'] = df1_buy['價格'] * df1_buy['買進股數']
+df2_buy = df2[['券商','價格','買進股數']].copy()
+df2_buy = df2_buy[df2_buy['買進股數']>0]
+df2_buy['買進成交金額'] = df2_buy['價格'] * df2_buy['買進股數']
+combined = pd.concat([df1_buy, df2_buy], ignore_index=True)
+grouped = combined.groupby('券商', as_index=False).agg({'買進股數':'sum','買進成交金額':'sum'})
+grouped['均價'] = (grouped['買進成交金額'] / grouped['買進股數']).round(1)
+grouped = grouped[grouped['買進股數']>0]
+grouped = grouped.rename(columns={'券商':'卷商','買進股數':'總買進股數','買進成交金額':'總買進成交金額'})
+grouped['股票代號'] = stock_code
+result = grouped[['卷商','均價','總買進股數','總買進成交金額','股票代號']]
+```
+==================================
+第0次修復
+錯誤訊息：'DataFrame' object has no attribute 'fileName'
+```python
+import re
+stock_code = re.search(r'(\d+)', df1_file_name).group(1)
+df1_buy = df1[['券商','價格','買進股數']].copy()
+df1_buy = df1_buy[df1_buy['買進股數']>0]
+df1_buy['買進成交金額'] = df1_buy['價格'] * df1_buy['買進股數']
+df2_buy = df2[['券商','價格','買進股數']].copy()
+df2_buy = df2_buy[df2_buy['買進股數']>0]
+df2_buy['買進成交金額'] = df2_buy['價格'] * df2_buy['買進股數']
+combined = pd.concat([df1_buy, df2_buy], ignore_index=True)
+grouped = combined.groupby('券商', as_index=False).agg({'買進股數':'sum','買進成交金額':'sum'})
+grouped['均價'] = (grouped['買進成交金額'] / grouped['買進股數']).round(1)
+grouped = grouped[grouped['買進股數']>0]
+grouped = grouped.rename(columns={'券商':'卷商','買進股數':'總買進股數','買進成交金額':'總買進成交金額'})
+grouped['股票代號'] = stock_code
+result = grouped[['卷商','均價','總買進股數','總買進成交金額','股票代號']]
+```
+==================================
+第1次修復
+錯誤訊息：name 'df1_file_name' is not defined
+```python
+import re
+stock_code = re.search(r'(\d+)', df1.name).group(1)
+df1_buy = df1[['券商','價格','買進股數']].copy()
+df1_buy = df1_buy[df1_buy['買進股數']>0]
+df1_buy['買進成交金額'] = df1_buy['價格'] * df1_buy['買進股數']
+stock_code2 = re.search(r'(\d+)', df2.name).group(1)
+df2_buy = df2[['券商','價格','買進股數']].copy()
+df2_buy = df2_buy[df2_buy['買進股數']>0]
+df2_buy['買進成交金額'] = df2_buy['價格'] * df2_buy['買進股數']
+combined = pd.concat([df1_buy, df2_buy], ignore_index=True)
+grouped = combined.groupby('券商', as_index=False).agg({'買進股數':'sum','買進成交金額':'sum'})
+grouped['均價'] = (grouped['買進成交金額'] / grouped['買進股數']).round(1)
+grouped = grouped[grouped['買進股數']>0]
+grouped = grouped.rename(columns={'券商':'卷商','買進股數':'總買進股數','買進成交金額':'總買進成交金額'})
+grouped['股票代號'] = stock_code
+result = grouped[['卷商','均價','總買進股數','總買進成交金額','股票代號']]
+```
+==================================
+第2次修復
+錯誤訊息：'DataFrame' object has no attribute 'name'
+exec("""
+import re
+stock_code = re.search(r'(\\d+)', file_name).group(1)
+df1_buy = df1[['券商','價格','買進股數']].copy()
+df1_buy = df1_buy[df1_buy['買進股數']>0]
+df1_buy['買進成交金額'] = df1_buy['價格'] * df1_buy['買進股數']
+df2_buy = df2[['券商','價格','買進股數']].copy()
+df2_buy = df2_buy[df2_buy['買進股數']>0]
+df2_buy['買進成交金額'] = df2_buy['價格'] * df2_buy['買進股數']
+combined = pd.concat([df1_buy, df2_buy], ignore_index=True)
+grouped = combined.groupby('券商', as_index=False).agg({'買進股數':'sum','買進成交金額':'sum'})
+grouped['均價'] = (grouped['買進成交金額'] / grouped['買進股數']).round(1)
+grouped = grouped[grouped['買進股數']>0]
+grouped = grouped.rename(columns={'券商':'卷商','買進股數':'總買進股數','買進成交金額':'總買進成交金額'})
+grouped['股票代號'] = stock_code
+result = grouped[['卷商','均價','總買進股數','總買進成交金額','股票代號']]
+""")
+==================================
+第3次修復
+錯誤訊息：name 'file_name' is not defined
+exec("""
+import re
+stock_code = re.search(r'(\\d+)', df1.attrs['file_name']).group(1)
+df1_buy = df1[['券商','價格','買進股數']].copy()
+df1_buy = df1_buy[df1_buy['買進股數']>0]
+df1_buy['買進成交金額'] = df1_buy['價格'] * df1_buy['買進股數']
+df2_buy = df2[['券商','價格','買進股數']].copy()
+df2_buy = df2_buy[df2_buy['買進股數']>0]
+df2_buy['買進成交金額'] = df2_buy['價格'] * df2_buy['買進股數']
+combined = pd.concat([df1_buy, df2_buy], ignore_index=True)
+grouped = combined.groupby('券商', as_index=False).agg({'買進股數':'sum','買進成交金額':'sum'})
+grouped['均價'] = (grouped['買進成交金額'] / grouped['買進股數']).round(1)
+grouped = grouped[grouped['買進股數']>0]
+grouped = grouped.rename(columns={'券商':'卷商','買進股數':'總買進股數','買進成交金額':'總買進成交金額'})
+grouped['股票代號'] = stock_code
+result = grouped[['卷商','均價','總買進股數','總買進成交金額','股票代號']]
+""")
+==================================
+total_tolen=12671
+==================================

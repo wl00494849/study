@@ -1,0 +1,13 @@
+```python
+df1['買進成交金額'] = df1['價格'] * df1['買進股數']
+df2['買進成交金額'] = df2['價格'] * df2['買進股數']
+df1_grouped = df1.groupby('券商').agg({'價格': 'mean', '買進股數': 'sum', '買進成交金額': 'sum'}).reset_index()
+df2_grouped = df2.groupby('券商').agg({'價格': 'mean', '買進股數': 'sum', '買進成交金額': 'sum'}).reset_index()
+result = pd.concat([df1_grouped, df2_grouped]).groupby('券商').agg({'價格': 'mean', '買進股數': 'sum', '買進成交金額': 'sum'}).reset_index()
+result['均價'] = result['價格'].round(1)
+result = result[['券商', '均價', '買進股數', '買進成交金額']]
+result['股票代號'] = '聯發科2454'
+```
+==================================
+total_tolen=1722
+==================================

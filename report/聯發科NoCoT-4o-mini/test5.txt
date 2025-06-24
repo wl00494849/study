@@ -1,0 +1,30 @@
+```python
+df1.columns = ['序號', '券商', '價格', '買進股數', '賣出股數', 'Unnamed: 5', '序號.1', '券商.1', '價格.1', '買進股數.1', '賣出股數.1']
+df2.columns = ['序號', '券商', '價格', '買進股數', '賣出股數', 'Unnamed: 5', '序號.1', '券商.1', '價格.1', '買進股數.1', '賣出股數.1']
+
+df1_grouped = df1.groupby('券商').agg(總買進股數=('買進股數', 'sum'), 總買進成交金額=('價格', lambda x: (x * df1.loc[x.index, '買進股數']).sum()))
+df2_grouped = df2.groupby('券商').agg(總買進股數=('買進股數', 'sum'), 總買進成交金額=('價格', lambda x: (x * df2.loc[x.index, '買進股數']).sum()))
+
+result = df1_grouped.add(df2_grouped, fill_value=0)
+result['均價'] = (result['總買進成交金額'] / result['總買進股數']).round(1)
+result['股票代號'] = '2454'
+result = result[['券商', '均價', '總買進股數', '總買進成交金額', '股票代號']]
+```
+==================================
+第0次修復
+錯誤訊息："['券商'] not in index"
+```python
+df1.columns = ['序號', '券商', '價格', '買進股數', '賣出股數', 'Unnamed: 5', '序號.1', '券商.1', '價格.1', '買進股數.1', '賣出股數.1']
+df2.columns = ['序號', '券商', '價格', '買進股數', '賣出股數', 'Unnamed: 5', '序號.1', '券商.1', '價格.1', '買進股數.1', '賣出股數.1']
+
+df1_grouped = df1.groupby('券商').agg(總買進股數=('買進股數', 'sum'), 總買進成交金額=('價格', lambda x: (x * df1.loc[x.index, '買進股數']).sum()))
+df2_grouped = df2.groupby('券商').agg(總買進股數=('買進股數', 'sum'), 總買進成交金額=('價格', lambda x: (x * df2.loc[x.index, '買進股數']).sum()))
+
+result = df1_grouped.add(df2_grouped, fill_value=0)
+result['均價'] = (result['總買進成交金額'] / result['總買進股數']).round(1)
+result['股票代號'] = '2454'
+result = result.reset_index()[['券商', '均價', '總買進股數', '總買進成交金額', '股票代號']]
+```
+==================================
+total_tolen=2750
+==================================

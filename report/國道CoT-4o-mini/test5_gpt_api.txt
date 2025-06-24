@@ -1,0 +1,48 @@
+要計算兩年營業額的平均並確保區名位置不變，我們可以按照以下步驟進行：
+
+1. **資料結構理解**：
+   - `df1` 和 `df2` 是兩個包含相似結構的 DataFrame，均有12個月份的營業額。
+   - `df1` 的年度為112年，`df2` 的年度為113年，並且區名是兩個 DataFrame 的索引。
+
+2. **資料清理**：
+   - `df1` 的營業額值為字串格式，需要將它們轉換為數值格式。
+     - 移除字串中的逗號（`,`）並將其轉換為整數或浮點數。
+   - `df2` 的營業額值則已經是數字格式，因此這步驟只適用於 `df1`。
+
+3. **合併 DataFrame**：
+   - 將 `df1` 與 `df2` 基於區名進行合併，以便能夠同時比較兩年的營業額。
+   - 合併的方式可以採用 `pd.merge` 方法，這樣可以保持區名的順序。
+
+4. **平均營業額計算**：
+   - 在合併後的 DataFrame 中新增一個列，來保存每個區名在兩年中的平均營業額。
+   - 對於每個區名，計算兩年的營業額的平均值，然後四捨五入到小數點第一位。
+
+5. **結果整理**：
+   - 創建一個新的 DataFrame，將區名及其相對應的年度平均營業額放入該 DataFrame 中，可以選擇只顯示區名和平均營業額的列。
+   
+6. **確保順序和格式**：
+   - 確保新 DataFrame 中的區名順序保持和原來的一致。
+   - 輸出結果可以依需求保存為 CSV 檔案或直接展示。
+
+通過上述步驟，我們可以高效地計算並獲得所需的兩年平均營業額，而不改變區名的位置。
+==================================
+```python
+df1['1月'] = df1['1月'].str.replace(',', '').astype(float)
+df1['2月'] = df1['2月'].str.replace(',', '').astype(float)
+df1['3月'] = df1['3月'].str.replace(',', '').astype(float)
+df1['4月'] = df1['4月'].str.replace(',', '').astype(float)
+df1['5月'] = df1['5月'].str.replace(',', '').astype(float)
+df1['6月'] = df1['6月'].str.replace(',', '').astype(float)
+df1['7月'] = df1['7月'].str.replace(',', '').astype(float)
+df1['8月'] = df1['8月'].str.replace(',', '').astype(float)
+df1['9月'] = df1['9月'].str.replace(',', '').astype(float)
+df1['10月'] = df1['10月'].str.replace(',', '').astype(float)
+df1['11月'] = df1['11月'].str.replace(',', '').astype(float)
+df1['12月'] = df1['12月'].str.replace(',', '').astype(float)
+result = pd.merge(df1, df2, on='區名', suffixes=('_112', '_113'))
+result['平均營業額'] = result.iloc[:, 1:].mean(axis=1).round(1)
+result = result[['區名', '平均營業額']]
+```
+==================================
+total_tolen=5077
+==================================

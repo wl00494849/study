@@ -1,0 +1,15 @@
+exec("""
+buy1 = df1[['券商', '價格', '買進股數']].copy()
+buy2 = df2[['券商', '價格', '買進股數']].copy()
+buy = pd.concat([buy1, buy2], ignore_index=True)
+buy['買進成交金額'] = buy['價格'] * buy['買進股數']
+grouped = buy.groupby('券商').agg({'價格':'mean', '買進股數':'sum', '買進成交金額':'sum'}).reset_index()
+grouped.columns = ['券商', '均價', '總買進股數', '總買進成交金額']
+grouped['均價'] = grouped['均價'].round(1)
+grouped['總買進成交金額'] = grouped['總買進成交金額'].round(1)
+grouped['股票代號'] = '2454'
+result = grouped[['券商', '均價', '總買進股數', '總買進成交金額', '股票代號']]
+""")
+==================================
+total_tolen=1711
+==================================

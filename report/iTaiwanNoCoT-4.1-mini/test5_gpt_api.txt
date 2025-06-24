@@ -1,0 +1,15 @@
+```python
+df1_renamed = df1.rename(columns={'主管機關': '主管機關', '地區': '地區', '熱點名稱': '熱點名稱', '地址': '地址', '經度': '經度', '緯度': '緯度'})
+df1_renamed['郵遞區號'] = None
+df2_renamed = df2.rename(columns={'地點': '主管機關', '地址': '地址', 'Latitude': '緯度', 'Longitude': '經度'})
+df2_renamed['地區'] = None
+df2_renamed['熱點名稱'] = None
+df2_renamed['郵遞區號'] = None
+df3_renamed = df3.rename(columns={'主管機關（所屬機關名稱）': '主管機關', '地區（所屬縣市名稱）': '地區', '熱點名稱（依熱點所在地命名）': '熱點名稱', '郵地區號': '郵遞區號', '地址': '地址', '經度': '經度', '緯度': '緯度'})
+result = pd.concat([df3_renamed[['郵遞區號','地區','熱點名稱','地址','經度','緯度']],df1_renamed[['郵遞區號','地區','熱點名稱','地址','經度','緯度']],df2_renamed[['郵遞區號','地區','熱點名稱','地址','經度','緯度']]],ignore_index=True)
+result['郵遞區號'] = pd.to_numeric(result['郵遞區號'], errors='coerce').fillna(0).astype(int)
+result = result.sort_values('郵遞區號').reset_index(drop=True)
+```
+==================================
+total_tolen=2310
+==================================

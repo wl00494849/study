@@ -1,0 +1,13 @@
+```python
+df1_buy = df1[['券商','價格','買進股數']].rename(columns={'價格':'價格_df1','買進股數':'買進股數_df1'})
+df2_buy = df2[['券商','價格','買進股數']].rename(columns={'價格':'價格_df2','買進股數':'買進股數_df2'})
+df_buy = pd.merge(df1_buy,df2_buy,on='券商',how='outer').fillna(0)
+df_buy['總買進股數'] = df_buy['買進股數_df1'] + df_buy['買進股數_df2']
+df_buy['總買進成交金額'] = df_buy['價格_df1']*df_buy['買進股數_df1'] + df_buy['價格_df2']*df_buy['買進股數_df2']
+df_buy['均價'] = (df_buy['總買進成交金額']/df_buy['總買進股數']).fillna(0).round(1)
+df_buy['股票代號'] = '2454'
+result = df_buy[['券商','均價','總買進股數','總買進成交金額','股票代號']]
+```
+==================================
+total_tolen=1746
+==================================

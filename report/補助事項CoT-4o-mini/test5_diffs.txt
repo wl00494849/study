@@ -1,0 +1,49 @@
+Row 0, Column '獎補助事項': gold = 全家最速PAY, test = x
+Row 1, Column '獎補助事項': gold = 大魯閣運動休閒多元支付擴展計畫, test = x
+Row 2, Column '獎補助事項': gold = 擴大行動支付普及應用服務補助計畫 -新北最速Pay，逛街不Delay 計畫, test = x
+Row 3, Column '獎補助事項': gold = 隨點即付，行動智慧好生活, test = x
+Row 4, Column '獎補助事項': gold = 智慧生活，行動開Pi, test = x
+Row 5, Column '獎補助事項': gold = 跨影城線上行動支付整合計畫, test = x
+Row 6, Column '獎補助事項': gold = 醫療院所聚合行動支付應用計畫, test = x
+Row 7, Column '獎補助事項': gold = 關貿聚合行動支付平台醫療院所推廣計畫, test = x
+Row 8, Column '獎補助事項': gold = OK mini 無現金支付迷你便利店推廣, test = x
+Row 9, Column '獎補助事項': gold = Hi-Life智慧生活HiPay推動計畫, test = x
+Row 10, Column '獎補助事項': gold = 六角國際集團擴大行動支付創新商業模式應用計畫, test = x
+Row 11, Column '獎補助事項': gold = 多元行動支付場域應用服務計畫, test = x
+Row 12, Column '獎補助事項': gold = 智慧引客，便利支付，創造行動數據力-寶島眼鏡行動支付推廣計畫, test = x
+Row 13, Column '獎補助事項': gold = 詩肯家居服務結合行動支付應用擴散計畫, test = x
+Row 14, Column '獎補助事項': gold = 歐特儀智慧停車場應用行動支付推廣計畫, test = x
+Row 15, Column '獎補助事項': gold = 發展創新應用優化使用體驗暨參與行動支付服務計畫, test = x
+Row 16, Column '獎補助事項': gold = 擴增現有系統暨新增信用卡QR code收付款功能以增加行動支付使用場域及應用計畫, test = x
+Row 17, Column '獎補助事項': gold = 智慧餐飲數位化支付整合研發暨推廣計畫, test = x
+Row 18, Column '獎補助事項': gold = 創新AI平台整合新零售行動支付研發計畫, test = x
+Row 19, Column '獎補助事項': gold = 車主錢包行動支付普及應用計畫, test = x
+Row 20, Column '獎補助事項': gold = 行動會員儲值卡支付應用計畫, test = x
+Row 21, Column '獎補助事項': gold = 行動會員儲值卡支付應用計畫, test = x
+Row 22, Column '獎補助事項': gold = LaJoin來就贏會員交叉行銷與行動支付推廣計畫, test = x
+Row 23, Column '獎補助事項': gold = 1+1>2以行動支付擴展台灣目的地旅遊商機, test = x
+Row 24, Column '獎補助事項': gold = 旺旺電商-行動支付共享分潤式服務計畫, test = x
+Row 25, Column '獎補助事項': gold = iCarry購物免自提行動支付服務擴散計畫, test = x
+Row 26, Column '獎補助事項': gold = 1+1>2 以行動支付擴展台灣目的地旅遊商機計畫, test = x
+Row 27, Column '獎補助事項': gold = “Pay妳一起瘦！”iFit愛瘦身行動支付推廣普及計畫, test = x
+Row 28, Column '獎補助事項': gold = 智慧社群商務平台行動支付計畫, test = x
+Row 29, Column '獎補助事項': gold = 台灣西部鐵路車站及全捷運智能寄物櫃多元支付建置計畫 , test = x
+Row 30, Column '獎補助事項': gold = 嘉義共享機車生態轉型行動支付整合計畫, test = x
+Row 31, Column '獎補助事項': gold = 民生場域店家會員行動電子錢包建置推動計畫, test = x
+Row 32, Column '獎補助事項': gold = 微風行動支付-微風Pay計畫, test = x
+Row 33, Column '獎補助事項': gold = 金山商圈行動支付普及計畫, test = x
+Row 34, Column '獎補助事項': gold = 基層醫療行動支付計畫, test = x
+Row 35, Column '獎補助事項': gold = 普及嘉義縣市之行動支付應用服務計畫, test = x
+Row 36, Column '獎補助事項': gold = 健身運動場館行動支付應用服務擴散計畫, test = x
+Row 37, Column '獎補助事項': gold = 美容產業行動支付擴散計畫, test = x
+Row 38, Column '獎補助事項': gold = 投幣器行動支付建置開發及擴散各產業計畫, test = x
+Row 39, Column '獎補助事項': gold = 行動支付模組整合智慧零售連鎖加盟應用推廣計畫, test = x
+Row 40, Column '獎補助事項': gold = 擴大普及台南市各商圈店家導入行動支付和使用一碼付(整合多元支付/全彩防偽QR CODE)應用服務, test = x
+Row 41, Column '獎補助事項': gold = 墨攻多元支付整合計畫, test = x
+Row 42, Column '獎補助事項': gold = 計程車擴大行動支付普及應用服務計畫, test = x
+Row 43, Column '獎補助事項': gold = 醫指付APP醫療行動支付普及推升計畫, test = x
+Row 44, Column '獎補助事項': gold = GeoShop平台行動支付推廣計畫, test = x
+Row 45, Column '獎補助事項': gold = 行動支付應用帶動服務升級計畫, test = x
+Row 46, Column '獎補助事項': gold = 線下傳統產業電子支付及線上轉型, test = x
+Row 47, Column '獎補助事項': gold = 連捷知付(Connection Compare Payment)智能比價支付平台研發暨推廣計畫, test = x
+Row 48, Column '獎補助事項': gold = 小型店家行動支付普及應用服務計畫, test = x

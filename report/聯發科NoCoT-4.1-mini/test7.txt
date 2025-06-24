@@ -1,0 +1,31 @@
+```python
+df1_buy = df1[['券商', '價格', '買進股數']]
+df1_buy.columns = ['券商', '價格', '買進股數']
+df2_buy = df2[['券商', '價格', '買進股數']]
+df2_buy.columns = ['券商', '價格', '買進股數']
+df_buy = pd.concat([df1_buy, df2_buy], ignore_index=True)
+grouped = df_buy.groupby('券商').agg(
+    總買進股數=('買進股數', 'sum'),
+    買進成交金額=('價格', lambda x: (x * df_buy.loc[x.index, '買進股數']).sum()),
+)
+grouped['均價'] = grouped['買進成交金額'] / grouped['總買進股數']
+grouped['均價'] = grouped['均價'].round(1)
+grouped['股票代號'] = '2454'
+result = grouped.reset_index()[['券商', '均價', '總買進股數', '買進成交金額', '股票代號']]
+```
+==================================
+第0次修復
+錯誤訊息：name 'df_buy' is not defined
+```python
+df_buy = pd.concat([df1[['券商','價格','買進股數']], df2[['券商','價格','買進股數']]], ignore_index=True)
+grouped = df_buy.groupby('券商').apply(lambda g: pd.Series({
+    '總買進股數': g['買進股數'].sum(),
+    '買進成交金額': (g['價格'] * g['買進股數']).sum()
+}))
+grouped['均價'] = (grouped['買進成交金額'] / grouped['總買進股數']).round(1)
+grouped['股票代號'] = '2454'
+result = grouped.reset_index()[['券商','均價','總買進股數','買進成交金額','股票代號']]
+```
+==================================
+total_tolen=2361
+==================================

@@ -1,0 +1,10 @@
+```python
+df1_num = df1.set_index('區名').replace(',', '', regex=True).astype(float)
+df2_num = df2.set_index('區名').astype(float)
+result = ((df1_num + df2_num) / 2).round(1)
+result.insert(0, '區名', result.index)
+result.reset_index(drop=True, inplace=True)
+```
+==================================
+total_tolen=1993
+==================================

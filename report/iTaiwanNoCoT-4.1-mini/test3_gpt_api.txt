@@ -1,0 +1,37 @@
+df2_renamed = df2.rename(columns={'地點': '主管機關', 'Latitude': '緯度', 'Longitude': '經度'})
+df2_renamed['郵遞區號'] = None
+df2_renamed['地區'] = None
+cols_df2 = ['郵遞區號', '地區', '主管機關', '地點', '緯度', '經度']
+df2_renamed = df2_renamed.rename(columns={'地點': '熱點名稱'})
+df2_renamed = df2_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+df1['郵遞區號'] = None
+df1_renamed = df1.rename(columns={'主管機關':'主管機關','地區':'地區','熱點名稱':'熱點名稱','地址':'地址','經度':'經度','緯度':'緯度'})
+df1_renamed = df1_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+df3_renamed = df3.rename(columns={'主管機關（所屬機關名稱）':'主管機關', '地區（所屬縣市名稱）':'地區', '熱點名稱（依熱點所在地命名）':'熱點名稱'})
+df3_renamed = df3_renamed[['郵地區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+df3_renamed = df3_renamed.rename(columns={'郵地區號':'郵遞區號'})
+df3_renamed['郵遞區號'] = pd.to_numeric(df3_renamed['郵遞區號'], errors='coerce')
+result = pd.concat([df3_renamed, df1_renamed, df2_renamed], ignore_index=True)
+result['郵遞區號'] = pd.to_numeric(result['郵遞區號'], errors='coerce')
+result = result.sort_values(by='郵遞區號', na_position='last').reset_index(drop=True)
+==================================
+第0次修復
+錯誤訊息："['熱點名稱'] not in index"
+```python
+df2_renamed = df2.rename(columns={'地點': '熱點名稱', 'Latitude': '緯度', 'Longitude': '經度'})
+df2_renamed['郵遞區號'] = None
+df2_renamed['地區'] = None
+df2_renamed = df2_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+df1['郵遞區號'] = None
+df1_renamed = df1.rename(columns={'主管機關':'主管機關','地區':'地區','熱點名稱':'熱點名稱','地址':'地址','經度':'經度','緯度':'緯度'})
+df1_renamed = df1_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+df3_renamed = df3.rename(columns={'主管機關（所屬機關名稱）':'主管機關', '地區（所屬縣市名稱）':'地區', '熱點名稱（依熱點所在地命名）':'熱點名稱', '郵地區號':'郵遞區號'})
+df3_renamed = df3_renamed[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+df3_renamed['郵遞區號'] = pd.to_numeric(df3_renamed['郵遞區號'], errors='coerce')
+result = pd.concat([df3_renamed, df1_renamed, df2_renamed], ignore_index=True)
+result['郵遞區號'] = pd.to_numeric(result['郵遞區號'], errors='coerce')
+result = result.sort_values(by='郵遞區號', na_position='last').reset_index(drop=True)
+```
+==================================
+total_tolen=3516
+==================================

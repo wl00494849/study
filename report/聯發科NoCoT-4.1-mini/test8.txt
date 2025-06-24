@@ -1,0 +1,22 @@
+```python
+df1_buy1 = df1[['券商', '價格', '買進股數']].rename(columns={'價格':'價格1', '買進股數':'買進股數1'})
+df1_buy2 = df1[['券商.1', '價格.1', '買進股數.1']].rename(columns={'券商.1':'券商', '價格.1':'價格1', '買進股數.1':'買進股數1'})
+df2_buy1 = df2[['券商', '價格', '買進股數']].rename(columns={'價格':'價格2', '買進股數':'買進股數2'})
+df2_buy2 = df2[['券商.1', '價格.1', '買進股數.1']].rename(columns={'券商.1':'券商', '價格.1':'價格2', '買進股數.1':'買進股數2'})
+df1_buy = pd.concat([df1_buy1, df1_buy2], ignore_index=True)
+df2_buy = pd.concat([df2_buy1, df2_buy2], ignore_index=True)
+df1_agg = df1_buy.groupby('券商').apply(lambda x: pd.Series({'價格_買進股數_總和':(x['價格1']*x['買進股數1']).sum(), '買進股數_總和': x['買進股數1'].sum()})).reset_index()
+df2_agg = df2_buy.groupby('券商').apply(lambda x: pd.Series({'價格_買進股數_總和':(x['價格2']*x['買進股數2']).sum(), '買進股數_總和': x['買進股數2'].sum()})).reset_index()
+merge_agg = pd.merge(df1_agg, df2_agg, on='券商', how='outer').fillna(0)
+merge_agg['總買進股數'] = merge_agg['買進股數_總和_x'] + merge_agg['買進股數_總和_y']
+merge_agg['總買進成交金額'] = merge_agg['價格_買進股數_總和_x'] + merge_agg['價格_買進股數_總和_y']
+merge_agg = merge_agg[merge_agg['總買進股數'] > 0]
+merge_agg['均價'] = (merge_agg['總買進成交金額'] / merge_agg['總買進股數']).round(1)
+merge_agg['總買進股數'] = merge_agg['總買進股數'].astype(int)
+merge_agg['總買進成交金額'] = merge_agg['總買進成交金額'].round(1)
+merge_agg['股票代號'] = '2454'
+result = merge_agg[['券商', '均價', '總買進股數', '總買進成交金額', '股票代號']]
+```
+==================================
+total_tolen=2136
+==================================

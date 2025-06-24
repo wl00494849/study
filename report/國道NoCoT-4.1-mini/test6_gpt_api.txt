@@ -1,0 +1,10 @@
+```python
+df1_num = df1.copy()
+df1_num.iloc[:,1:] = df1_num.iloc[:,1:].replace(',', '', regex=True).astype(float)
+result = df1_num.copy()
+for col in df1_num.columns[1:]:
+    result[col] = ((df1_num[col] + df2[col]) / 2).round(1)
+```
+==================================
+total_tolen=1991
+==================================

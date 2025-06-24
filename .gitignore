@@ -1,0 +1,7 @@
+__pycache__
+myenv
+*.env
+*.csv
+.DS_Store
+distillation.py
+test1.py

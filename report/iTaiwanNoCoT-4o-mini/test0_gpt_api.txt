@@ -1,0 +1,21 @@
+```python
+df1_merged = df1[['地址', '熱點名稱', '緯度', '經度']].copy()
+df1_merged['郵遞區號'] = None
+df1_merged['地區'] = df1['地區']
+
+df2_merged = df2[['地點', '地址', 'Latitude', 'Longitude']].copy()
+df2_merged['郵遞區號'] = None
+df2_merged['地區'] = None
+df2_merged['熱點名稱'] = df2_merged['地點']
+
+df3_merged = df3[['郵地區號', '地區（所屬縣市名稱）', '熱點名稱（依熱點所在地命名）', '地址', '緯度', '經度']].copy()
+df3_merged.columns = ['郵遞區號', '地區', '熱點名稱', '地址', '緯度', '經度']
+
+result = pd.concat([df1_merged, df2_merged, df3_merged], ignore_index=True)
+result = result[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+result['郵遞區號'] = result['郵遞區號'].astype('Int64')
+result = result.sort_values(by='郵遞區號').reset_index(drop=True)
+```
+==================================
+total_tolen=2214
+==================================

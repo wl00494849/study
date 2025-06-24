@@ -1,0 +1,19 @@
+```python
+df1.iloc[:, 1:] = df1.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+df2.iloc[:, 1:] = df2.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+result = df1.copy()
+result.iloc[:, 1:] = (df1.iloc[:, 1:].mean(axis=1) + df2.iloc[:, 1:].mean(axis=1)) / 2
+result.iloc[:, 1:] = result.iloc[:, 1:].round(1)
+```
+==================================
+第0次修復
+錯誤訊息：setting an array element with a sequence.
+```python
+df1.iloc[:, 1:] = df1.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+df2.iloc[:, 1:] = df2.iloc[:, 1:].replace(',', '', regex=True).astype(float)
+result = df1.copy()
+result.iloc[:, 1:] = ((df1.iloc[:, 1:] + df2.iloc[:, 1:]) / 2).round(1)
+```
+==================================
+total_tolen=2401
+==================================

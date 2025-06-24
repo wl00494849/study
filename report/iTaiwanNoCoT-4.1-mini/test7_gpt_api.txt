@@ -1,0 +1,63 @@
+```python
+df1_ = df1.copy()
+df1_['郵遞區號'] = pd.NA
+df1_['經度'] = df1_['經度']
+df1_['緯度'] = df1_['緯度']
+df1_['地區'] = df1_['地區']
+df1_['熱點名稱'] = df1_['熱點名稱']
+df1_['地址'] = df1_['地址']
+df1_sub = df1_[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+
+df2_ = df2.copy()
+df2_['郵遞區號'] = pd.NA
+df2_ = df2_.rename(columns={'地點':'熱點名稱', 'Latitude':'緯度', 'Longitude':'經度'})
+df2_['地區'] = pd.NA
+df2_ = df2_[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+
+df3_ = df3.copy()
+df3_ = df3_.rename(columns={
+    '主管機關（所屬機關名稱）':'主管機關',
+    '地區（所屬縣市名稱）':'地區',
+    '熱點名稱（依熱點所在地命名）':'熱點名稱',
+    '緯度':'緯度',
+    '經度':'經度',
+})
+df3_sub = df3_[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+
+result = pd.concat([df3_sub, df1_sub, df2_], ignore_index=True)
+result['郵遞區號'] = pd.to_numeric(result['郵遞區號'], errors='coerce').fillna(0).astype(int)
+result = result.sort_values('郵遞區號').reset_index(drop=True)
+```
+==================================
+第0次修復
+錯誤訊息："['郵遞區號'] not in index"
+```python
+df1_ = df1.copy()
+df1_['郵遞區號'] = pd.NA
+df1_ = df1_[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+
+df2_ = df2.copy()
+df2_['郵遞區號'] = pd.NA
+df2_ = df2_.rename(columns={'地點':'熱點名稱', 'Latitude':'緯度', 'Longitude':'經度'})
+df2_['地區'] = pd.NA
+df2_ = df2_[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+
+df3_ = df3.copy()
+df3_ = df3_.rename(columns={
+    '主管機關（所屬機關名稱）':'主管機關',
+    '地區（所屬縣市名稱）':'地區',
+    '熱點名稱（依熱點所在地命名）':'熱點名稱',
+    '緯度':'緯度',
+    '經度':'經度',
+})
+if '郵遞區號' not in df3_.columns:
+    df3_['郵遞區號'] = pd.NA
+df3_ = df3_[['郵遞區號', '地區', '熱點名稱', '地址', '經度', '緯度']]
+
+result = pd.concat([df3_, df1_, df2_], ignore_index=True)
+result['郵遞區號'] = pd.to_numeric(result['郵遞區號'], errors='coerce').fillna(0).astype(int)
+result = result.sort_values('郵遞區號').reset_index(drop=True)
+```
+==================================
+total_tolen=3379
+==================================

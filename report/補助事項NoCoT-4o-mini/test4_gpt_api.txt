@@ -1,0 +1,8 @@
+```python
+merged_df = pd.merge(df1, df2, on='統一編號')
+merged_df['獎補助事項'] = merged_df['獎補助事項'].str.replace('補助中小企業擴散行動支付場域及創新應用-', '')
+result = merged_df[['統一編號', '公司名稱', '資本總額', '公司地址', '獎補助事項', '補助金額(元)']].sort_values(by='資本總額', ascending=False)
+```
+==================================
+total_tolen=2290
+==================================

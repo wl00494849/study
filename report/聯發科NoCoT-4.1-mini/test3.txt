@@ -1,0 +1,12 @@
+```python
+df_all = pd.concat([df1[['券商','價格','買進股數']], df2[['券商','價格','買進股數']]])
+df_all['成交金額'] = df_all['價格'] * df_all['買進股數']
+grouped = df_all.groupby('券商').agg(總買進股數=('買進股數','sum'), 總買進成交金額=('成交金額','sum'))
+grouped['均價'] = (grouped['總買進成交金額'] / grouped['總買進股數']).round(1)
+grouped.reset_index(inplace=True)
+grouped['股票代號'] = '2454'
+result = grouped[['券商','均價','總買進股數','總買進成交金額','股票代號']]
+```
+==================================
+total_tolen=1659
+==================================
