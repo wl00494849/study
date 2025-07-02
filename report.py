@@ -10,7 +10,7 @@ import numpy as np
 
 
 def main():
-    savePath="report/iTaiwanNoCoT-4o-mini"
+    savePath="report/電動機車NoCoT-4.1-mini"
     run_report(savePath)
 
 main()

@@ -1,0 +1,9 @@
+```python
+df1['count'] = 1
+count_df1 = df1.groupby('dis').count()['count'].reset_index(name='充電站數量')
+count_df1['縣市'] = '新北市'
+result = count_df1[['縣市', 'dis', '充電站數量']].rename(columns={'dis': '行政區'}).sort_values(by='充電站數量', ascending=False)
+```
+==================================
+total_tolen=1462
+==================================

@@ -1,0 +1,33 @@
+```python
+result = (
+    df1.groupby('dis').size().reset_index(name='充電站數量')
+    .assign(縣市='新北市')
+    .rename(columns={'dis': '行政區'})
+    .append(
+        df2.groupby('行政區').size().reset_index(name='充電站數量')
+        .assign(縣市='臺北市')
+        .rename(columns={'行政區': '行政區'})
+    )
+    .groupby(['縣市', '行政區'], as_index=False)['充電站數量'].sum()
+    .sort_values(by='充電站數量', ascending=False)
+)
+```
+==================================
+第0次修復
+錯誤訊息：'DataFrame' object has no attribute 'append'
+result = (
+    pd.concat([
+        df1.groupby('dis').size().reset_index(name='充電站數量')
+        .assign(縣市='新北市')
+        .rename(columns={'dis': '行政區'}),
+        
+        df2.groupby('行政區').size().reset_index(name='充電站數量')
+        .assign(縣市='臺北市')
+        .rename(columns={'行政區': '行政區'})
+    ])
+    .groupby(['縣市', '行政區'], as_index=False)['充電站數量'].sum()
+    .sort_values(by='充電站數量', ascending=False)
+)
+==================================
+total_tolen=1975
+==================================

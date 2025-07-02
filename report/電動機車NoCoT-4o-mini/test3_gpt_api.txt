@@ -1,0 +1,8 @@
+```python
+df1_grouped = df1.groupby('dis').size().reset_index(name='充電站數量')
+df1_grouped['縣市'] = '新北市'
+result = df1_grouped[['縣市', 'dis', '充電站數量']].sort_values(by='充電站數量', ascending=False)
+```
+==================================
+total_tolen=1444
+==================================

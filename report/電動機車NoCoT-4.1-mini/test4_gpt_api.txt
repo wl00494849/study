@@ -1,0 +1,13 @@
+```python
+df1_grouped = df1.groupby('dis').size().reset_index(name='充電站數量')
+df1_grouped['縣市'] = '新北市'
+df2_grouped = df2.groupby('行政區').size().reset_index(name='充電站數量')
+df2_grouped['縣市'] = '臺北市'
+df2_grouped.rename(columns={'行政區':'dis'}, inplace=True)
+result = pd.concat([df1_grouped, df2_grouped], ignore_index=True)
+result = result[['縣市', 'dis', '充電站數量']]
+result = result.sort_values('充電站數量', ascending=False).reset_index(drop=True)
+```
+==================================
+total_tolen=1520
+==================================

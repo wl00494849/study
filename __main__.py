@@ -19,13 +19,22 @@ def main():
     #     prompt="計算這兩年的營業額的平均，到小數點第一位，區名位置不要做更動"
     # )
 
-    run_script1(
-        filePath1="data/雲林iTaiwan.csv",
-        filePath2="data/高雄iTaiwan.csv",
-        filePath3="data/南投iTaiwan.csv",
-        model="gpt-4o-mini",
-        isCoT=True,
-        savePath="iTaiwanCoT-4o-mini",
-        prompt="幫我合併這三個檔案，缺值自行擷取，郵遞區號由低到高排序，欄位:郵遞區號、地區、熱點名稱、地址、經度、緯度"
+    run_script(
+        filePath1="data/新北市電動機車充電站.csv",
+        filePath2="data/臺北市電動機車充電站.csv",
+        model="gpt-4.1-mini",
+        isCoT=False,
+        savePath="電動機車NoCoT-4.1-mini-01",
+        prompt="幫我計算各行政區充電站數量，並按充電站數量排序。欄位：縣市、行政區、充電站數量"
     )
+
+    # run_script1(
+    #     filePath1="data/雲林iTaiwan.csv",
+    #     filePath2="data/高雄iTaiwan.csv",
+    #     filePath3="data/南投iTaiwan.csv",
+    #     model="gpt-4o-mini",
+    #     isCoT=True,
+    #     savePath="iTaiwanCoT-4o-mini",
+    #     prompt="幫我合併這三個檔案，缺值自行擷取，郵遞區號由低到高排序，欄位:郵遞區號、地區、熱點名稱、地址、經度、緯度"
+    # )
 main()

@@ -37,9 +37,9 @@ def main():
                 logging.info("Quitting the process")
                 break
             case "d":
-                break
-                # key = input("請輸入要搜尋的開放資料名稱:")
-                # search_file(keyword=key,top=15)
+                key = input("請輸入要搜尋的開放資料名稱:")
+                search_file(keyword=key,top=15)
+                pass
             case "s":
                 term1 = input("請輸入要比較的詞1:")
                 term2 = input("請輸入要比較的詞2:")

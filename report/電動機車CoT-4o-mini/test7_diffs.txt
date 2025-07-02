@@ -1,0 +1,12 @@
+Row 1, Column '縣市': gold = 臺北市, test = 台北市
+Row 4, Column '縣市': gold = 臺北市, test = 台北市
+Row 5, Column '縣市': gold = 臺北市, test = 台北市
+Row 6, Column '縣市': gold = 臺北市, test = 台北市
+Row 7, Column '縣市': gold = 臺北市, test = 台北市
+Row 8, Column '縣市': gold = 臺北市, test = 台北市
+Row 9, Column '縣市': gold = 臺北市, test = 台北市
+Row 10, Column '縣市': gold = 臺北市, test = 台北市
+Row 12, Column '縣市': gold = 臺北市, test = 台北市
+Row 13, Column '縣市': gold = 臺北市, test = 台北市
+Row 19, Column '縣市': gold = 臺北市, test = 台北市
+Row 20, Column '縣市': gold = 臺北市, test = 台北市

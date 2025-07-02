@@ -1,14 +1,9 @@
 import pandas as pd
 from sklearn.metrics import precision_score, recall_score, f1_score
 
-import pandas as pd
-from sklearn.metrics import precision_score, recall_score, f1_score
+gold = pd.read_csv('report/聯發科CoT-4.1-mini/gold.csv')     
+pred  = pd.read_csv('report/聯發科CoT-4.1-mini/test1.csv')    
 
-# === 取得真值與預測 ===
-gold = pd.read_csv('report/聯發科CoT-4.1-mini/gold.csv')      # 含全部欄位
-pred  = pd.read_csv('report/聯發科CoT-4.1-mini/test1.csv')     # 含全部欄位
-
-# === 把 pred 裡的所有列組成元組集合 ===
 pred_set = set(map(tuple, pred.values))
 gold_set = set(map(tuple,gold.values))
 

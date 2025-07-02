@@ -1,0 +1,8 @@
+```python
+df1['city'] = '新北市'
+df1_summary = df1.groupby('dis').size().reset_index(name='充電站數量')
+result = df1_summary.rename(columns={'dis': '行政區'}).sort_values(by='充電站數量', ascending=False)
+```
+==================================
+total_tolen=1432
+==================================

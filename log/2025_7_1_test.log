@@ -1,0 +1,4 @@
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:root:Chat model set to: gpt-4o-mini
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
